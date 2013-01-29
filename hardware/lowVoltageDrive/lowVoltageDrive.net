@@ -1,0 +1,1142 @@
+# EESchema Netlist Version 1.1 created  1/12/2013 7:05:22 AM
+(
+ ( /5098A856 SM0603  C24 0.47uF_50V {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /5098A84E SM0603  C23 0.47uF_50V {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /5098A82F SM0603  C22 0.47uF_50V {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /50989DDB SM_CAP_ALUM_6D3  C16 220uF_6.3V {Lib=CAP_POL}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /50989D48 SM_CAP_ALUM_6D3  C17 47uF_25V {Lib=CAP_POL}
+  (    1 +12V )
+  (    2 GND )
+ )
+ ( /509898D9 SM0603  C19 0.47uF_50V {Lib=C}
+  (    1 +12V )
+  (    2 GND )
+ )
+ ( /509898C3 SM0603  C20 0.47uF_50V {Lib=C}
+  (    1 +12V )
+  (    2 GND )
+ )
+ ( /509898AA SM0603  C21 0.47uF_50V {Lib=C}
+  (    1 +12V )
+  (    2 GND )
+ )
+ ( /5098953A SM_CAP_ALUM_6D3  C18 47uF_25V {Lib=CAP_POL}
+  (    1 +12V )
+  (    2 I_SUM )
+ )
+ ( /509865F2 SOD323  D1 DIODE {Lib=DIODE}
+  (    1 +5V )
+  (    2 +12V )
+ )
+ ( /509084AB CONN6_5-1775444-6  J5 CONN_6 {Lib=CONN_6}
+  (    1 IN_PWM )
+  (    2 OUT_TACH )
+  (    3 OUT_DAC )
+  (    4 I2C_SDA )
+  (    5 I2C_SCL )
+  (    6 GND )
+ )
+ ( /5090809E TO-220-3_tripod  Q6 MOSFET_N_TO220 {Lib=MOSFET_N_TO220}
+  (    1 N-000024 )
+  (    2 PHC )
+  (    3 I_SUM )
+ )
+ ( /5090809A TO-220-3_tripod  Q5 MOSFET_N_TO220 {Lib=MOSFET_N_TO220}
+  (    1 N-000025 )
+  (    2 +12V )
+  (    3 PHC )
+ )
+ ( /50908096 TO-220-3_tripod  Q4 MOSFET_N_TO220 {Lib=MOSFET_N_TO220}
+  (    1 N-000038 )
+  (    2 PHB )
+  (    3 I_SUM )
+ )
+ ( /50908092 TO-220-3_tripod  Q3 MOSFET_N_TO220 {Lib=MOSFET_N_TO220}
+  (    1 N-000037 )
+  (    2 +12V )
+  (    3 PHB )
+ )
+ ( /5090808F TO-220-3_tripod  Q2 MOSFET_N_TO220 {Lib=MOSFET_N_TO220}
+  (    1 N-000031 )
+  (    2 PHA )
+  (    3 I_SUM )
+ )
+ ( /50907E4C SM0603  R3 10.0k {Lib=R}
+  (    1 +3.3V )
+  (    2 I2C_SDA )
+ )
+ ( /50907E3C SM0603  R1 10.0k {Lib=R}
+  (    1 +3.3V )
+  (    2 I2C_SCL )
+ )
+ ( /50907DE4 SM0603  C4 1nF_50V {Lib=C}
+  (    1 OUT_DAC )
+  (    2 GND )
+ )
+ ( /50907DD8 SM0603  R8 10.0k {Lib=R}
+  (    1 OUT_DAC )
+  (    2 DIG_OUT_DAC )
+ )
+ ( /50907CC2 SM0603  R5 10.0k {Lib=R}
+  (    1 DIG_IN_PWM )
+  (    2 GND )
+ )
+ ( /50907CBA SM0603  R4 10.0k {Lib=R}
+  (    1 +3.3V )
+  (    2 DIG_IN_PWM )
+ )
+ ( /50907CA9 SM0603  R2 1.0k {Lib=R}
+  (    1 IN_PWM )
+  (    2 DIG_IN_PWM )
+ )
+ ( /50907C9B SM0603  C3 1nF_50V {Lib=C}
+  (    1 DIG_IN_PWM )
+  (    2 GND )
+ )
+ ( /50907B46 SM0603  C7 1nF_50V {Lib=C}
+  (    1 DIG_HALL_0 )
+  (    2 GND )
+ )
+ ( /50907B40 SM0603  C8 1nF_50V {Lib=C}
+  (    1 DIG_HALL_1 )
+  (    2 GND )
+ )
+ ( /50907B39 SM0603  C9 1nF_50V {Lib=C}
+  (    1 DIG_HALL_2 )
+  (    2 GND )
+ )
+ ( /50907964 SM0603  R21 1.0k {Lib=R}
+  (    1 +3.3V )
+  (    2 IN_HALL_2 )
+ )
+ ( /50907960 SM0603  R20 1.0k {Lib=R}
+  (    1 +3.3V )
+  (    2 IN_HALL_1 )
+ )
+ ( /5090795A SM0603  R18 1.0k {Lib=R}
+  (    1 +3.3V )
+  (    2 IN_HALL_0 )
+ )
+ ( /50907922 SM0603  R15 1.0k {Lib=R}
+  (    1 IN_HALL_2 )
+  (    2 DIG_HALL_2 )
+ )
+ ( /5090791C SM0603  R16 1.0k {Lib=R}
+  (    1 IN_HALL_1 )
+  (    2 DIG_HALL_1 )
+ )
+ ( /5090790F SM0603  R17 1.0k {Lib=R}
+  (    1 IN_HALL_0 )
+  (    2 DIG_HALL_0 )
+ )
+ ( /509078A9 CONN5_5-1775444-5  J3 CONN_5 {Lib=CONN_5}
+  (    1 +12V )
+  (    2 GND )
+  (    3 IN_HALL_0 )
+  (    4 IN_HALL_1 )
+  (    5 IN_HALL_2 )
+ )
+ ( /50907777 SM0603  R14 1.5k {Lib=R}
+  (    1 GND )
+  (    2 ANALOG_VBUS_FBK )
+ )
+ ( /50907776 SM0603  R13 10.0k {Lib=R}
+  (    1 +12V )
+  (    2 ANALOG_VBUS_FBK )
+ )
+ ( /5090776D SM0603  R6 10.0k {Lib=R}
+  (    1 PHA )
+  (    2 ANALOG_PHA_FBK )
+ )
+ ( /5090776C SM0603  R7 1.5k {Lib=R}
+  (    1 GND )
+  (    2 ANALOG_PHA_FBK )
+ )
+ ( /50907762 SM0603  R10 1.5k {Lib=R}
+  (    1 GND )
+  (    2 ANALOG_PHB_FBK )
+ )
+ ( /50907761 SM0603  R9 10.0k {Lib=R}
+  (    1 PHB )
+  (    2 ANALOG_PHB_FBK )
+ )
+ ( /50907723 SM0603  R11 10.0k {Lib=R}
+  (    1 PHC )
+  (    2 ANALOG_PHC_FBK )
+ )
+ ( /509076FC SM0603  R12 1.5k {Lib=R}
+  (    1 GND )
+  (    2 ANALOG_PHC_FBK )
+ )
+ ( /509075B4 SM0603  R19 1.5k {Lib=R}
+  (    1 USB_D+ )
+  (    2 +5V )
+ )
+ ( /5090751F USB_MICRO_AB  J2 CONN_5 {Lib=CONN_5}
+  (    1 +5V )
+  (    2 USB_D- )
+  (    3 USB_D+ )
+  (    4 ? )
+  (    5 GND )
+ )
+ ( /509074EA SM0603  C15 0.47uF_50V {Lib=C}
+  (    1 N-000003 )
+  (    2 GND )
+ )
+ ( /509074B1 SO14N  U3 QUAD_OPAMP {Lib=QUAD_OPAMP}
+  (    1 DIG_NOT_FLT )
+  (    2 ANALOG_I_FBK )
+  (    3 N-000012 )
+  (    4 +3.3V )
+  (    5 GND )
+  (    6 UNUSED )
+  (    7 UNUSED )
+  (    8 V_REF )
+  (    9 V_REF )
+  (   10 N-000003 )
+  (   11 GND )
+  (   12 N-000046 )
+  (   13 N-000084 )
+  (   14 N-000045 )
+ )
+ ( /50907473 SM0603  R33 10.0k {Lib=R}
+  (    1 +3.3V )
+  (    2 N-000003 )
+ )
+ ( /50907467 SM0603  R34 10.0k {Lib=R}
+  (    1 N-000003 )
+  (    2 GND )
+ )
+ ( /50907388 SM0603  C10 0.47uF_50V {Lib=C}
+  (    1 N-000012 )
+  (    2 GND )
+ )
+ ( /50907373 SM0603  R23 10.0k {Lib=R}
+  (    1 N-000012 )
+  (    2 GND )
+ )
+ ( /5090736A SM0603  R22 1.0k {Lib=R}
+  (    1 +3.3V )
+  (    2 N-000012 )
+ )
+ ( /509072D7 SM0603  C11 1nF_50V {Lib=C}
+  (    1 ANALOG_I_FBK )
+  (    2 GND )
+ )
+ ( /5090729B SM0603  R24 1.0k {Lib=R}
+  (    1 N-000045 )
+  (    2 ANALOG_I_FBK )
+ )
+ ( /50907191 CONN10_5X2_0.050  J1 CONN_5X2 {Lib=CONN_5X2}
+  (    1 +3.3V )
+  (    2 N-000051 )
+  (    3 GND )
+  (    4 N-000040 )
+  (    5 GND )
+  (    6 ? )
+  (    7 ? )
+  (    8 ? )
+  (    9 ? )
+  (   10 NRST )
+ )
+ ( /50907160 SM0603  C6 8pF_50V {Lib=C}
+  (    1 GND )
+  (    2 N-000058 )
+ )
+ ( /5090709D SM0603  R26 1.0k {Lib=R}
+  (    1 N-000084 )
+  (    2 N-000045 )
+ )
+ ( /50907092 SM0603  R25 1.0k {Lib=R}
+  (    1 N-000046 )
+  (    2 V_REF )
+ )
+ ( /5090708D SM0603  R36 1.0k {Lib=R}
+  (    1 GND )
+  (    2 N-000084 )
+ )
+ ( /50907003 SM0603  R35 1.0k {Lib=R}
+  (    1 I_SUM )
+  (    2 N-000046 )
+ )
+ ( /50906FE2 SM2818_POWER  R37 0.01 {Lib=R}
+  (    1 GND )
+  (    2 I_SUM )
+ )
+ ( /50906F14 SM0603  C2 0.47uF_50V {Lib=C}
+  (    1 +3.3V )
+  (    2 GND )
+ )
+ ( /50906F0E SM0603  C1 0.47uF_50V {Lib=C}
+  (    1 +12V )
+  (    2 GND )
+ )
+ ( /50906F01 SM0603  C14 0.47uF_50V {Lib=C}
+  (    1 N-000071 )
+  (    2 PHC )
+ )
+ ( /50906EFC SM0603  C13 0.47uF_50V {Lib=C}
+  (    1 N-000039 )
+  (    2 PHB )
+ )
+ ( /50906EAB SM0603  C5 8pF_50V {Lib=C}
+  (    1 GND )
+  (    2 N-000059 )
+ )
+ ( /50906E94 CRYSTAL_NDK_NX5032GA  X1 CRYSTAL {Lib=CRYSTAL}
+  (    1 N-000058 )
+  (    2 N-000059 )
+ )
+ ( /508F225C QFP-48  U2 STM32F103XX-48 {Lib=STM32F103XX-48}
+  (    1 ? )
+  (    2 ? )
+  (    3 ? )
+  (    4 ? )
+  (    5 N-000059 )
+  (    6 N-000058 )
+  (    7 NRST )
+  (    8 GND )
+  (    9 +3.3V )
+  (   10 ANALOG_PHA_FBK )
+  (   11 ANALOG_PHB_FBK )
+  (   12 ANALOG_PHC_FBK )
+  (   13 ANALOG_VBUS_FBK )
+  (   14 DIG_IN_PWM )
+  (   15 OUT_TACH )
+  (   16 DIG_OUT_DAC )
+  (   17 ANALOG_I_FBK )
+  (   18 DIG_HALL_2 )
+  (   19 DIG_HALL_0 )
+  (   20 DIG_HALL_1 )
+  (   21 I2C_SDA )
+  (   22 I2C_SCL )
+  (   23 GND )
+  (   24 +3.3V )
+  (   25 DIG_NOT_FLT )
+  (   26 DIG_AL )
+  (   27 DIG_BL )
+  (   28 DIG_CL )
+  (   29 DIG_AH )
+  (   30 DIG_BH )
+  (   31 DIG_CH )
+  (   32 USB_D- )
+  (   33 USB_D+ )
+  (   34 N-000051 )
+  (   35 GND )
+  (   36 +3.3V )
+  (   37 N-000040 )
+  (   38 ? )
+  (   39 ? )
+  (   40 ? )
+  (   41 ? )
+  (   42 ? )
+  (   43 ? )
+  (   44 ? )
+  (   45 ? )
+  (   46 ? )
+  (   47 GND )
+  (   48 +3.3V )
+ )
+ ( /508F2110 SOT223  U1 VREG_4 {Lib=VREG_4}
+  (    1 GND )
+  (    2 +3.3V )
+  (    3 +12V )
+  (    4 +3.3V )
+ )
+ ( /508F1E09 CONN5_OSTTC050162  J4 CONN_5 {Lib=CONN_5}
+  (    1 +12V )
+  (    2 GND )
+  (    3 PHA )
+  (    4 PHB )
+  (    5 PHC )
+ )
+ ( /508F19CA SM0603  R32 33 {Lib=R}
+  (    1 N-000023 )
+  (    2 N-000024 )
+ )
+ ( /508F19C8 SM0603  R31 33 {Lib=R}
+  (    1 N-000034 )
+  (    2 N-000025 )
+ )
+ ( /508F19C7 SOD323  D4 DIODE {Lib=DIODE}
+  (    1 +12V )
+  (    2 N-000071 )
+ )
+ ( /508F19C5 SO8N  U6 MOSFET_DRIVER {Lib=MOSFET_DRIVER}
+  (    1 +12V )
+  (    2 DIG_CH )
+  (    3 DIG_CL )
+  (    4 GND )
+  (    5 N-000023 )
+  (    6 PHC )
+  (    7 N-000034 )
+  (    8 N-000071 )
+ )
+ ( /508F19BE SO8N  U5 MOSFET_DRIVER {Lib=MOSFET_DRIVER}
+  (    1 +12V )
+  (    2 DIG_BH )
+  (    3 DIG_BL )
+  (    4 GND )
+  (    5 N-000035 )
+  (    6 PHB )
+  (    7 N-000036 )
+  (    8 N-000039 )
+ )
+ ( /508F19BC SOD323  D3 DIODE {Lib=DIODE}
+  (    1 +12V )
+  (    2 N-000039 )
+ )
+ ( /508F19BB SM0603  R29 33 {Lib=R}
+  (    1 N-000036 )
+  (    2 N-000037 )
+ )
+ ( /508F19B9 SM0603  R30 33 {Lib=R}
+  (    1 N-000035 )
+  (    2 N-000038 )
+ )
+ ( /508F185C SM0603  R28 33 {Lib=R}
+  (    1 N-000030 )
+  (    2 N-000031 )
+ )
+ ( /508F1427 SM0603  R27 33 {Lib=R}
+  (    1 N-000032 )
+  (    2 N-000033 )
+ )
+ ( /508F1404 SOD323  D2 DIODE {Lib=DIODE}
+  (    1 +12V )
+  (    2 N-000072 )
+ )
+ ( /508F13E5 SM0603  C12 0.47uF_50V {Lib=C}
+  (    1 N-000072 )
+  (    2 PHA )
+ )
+ ( /508F13CC SO8N  U4 MOSFET_DRIVER {Lib=MOSFET_DRIVER}
+  (    1 +12V )
+  (    2 DIG_AH )
+  (    3 DIG_AL )
+  (    4 GND )
+  (    5 N-000030 )
+  (    6 PHA )
+  (    7 N-000032 )
+  (    8 N-000072 )
+ )
+ ( /508F139F TO-220-3_tripod  Q1 MOSFET_N_TO220 {Lib=MOSFET_N_TO220}
+  (    1 N-000033 )
+  (    2 +12V )
+  (    3 PHA )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C24
+ SM*
+ C?
+ C1-1
+$endlist
+$component C23
+ SM*
+ C?
+ C1-1
+$endlist
+$component C22
+ SM*
+ C?
+ C1-1
+$endlist
+$component C19
+ SM*
+ C?
+ C1-1
+$endlist
+$component C20
+ SM*
+ C?
+ C1-1
+$endlist
+$component C21
+ SM*
+ C?
+ C1-1
+$endlist
+$component D1
+ D?
+ S*
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C7
+ SM*
+ C?
+ C1-1
+$endlist
+$component C8
+ SM*
+ C?
+ C1-1
+$endlist
+$component C9
+ SM*
+ C?
+ C1-1
+$endlist
+$component R21
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R20
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R18
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R15
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R16
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R17
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R14
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R13
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R10
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R11
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R12
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R19
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C15
+ SM*
+ C?
+ C1-1
+$endlist
+$component R33
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R34
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C10
+ SM*
+ C?
+ C1-1
+$endlist
+$component R23
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R22
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C11
+ SM*
+ C?
+ C1-1
+$endlist
+$component R24
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component R26
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R25
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R36
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R35
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R37
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C14
+ SM*
+ C?
+ C1-1
+$endlist
+$component C13
+ SM*
+ C?
+ C1-1
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component R32
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R31
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D4
+ D?
+ S*
+$endlist
+$component D3
+ D?
+ S*
+$endlist
+$component R29
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R30
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R28
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R27
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component D2
+ D?
+ S*
+$endlist
+$component C12
+ SM*
+ C?
+ C1-1
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 "USB_D+" "USB_D+"
+ J2 3
+ R19 1
+ U2 33
+Net 3 "" ""
+ R33 2
+ C15 1
+ R34 1
+ U3 10
+Net 4 "ANALOG_VBUS_FBK" "ANALOG_VBUS_FBK"
+ R13 2
+ R14 2
+ U2 13
+Net 5 "ANALOG_PHB_FBK" "ANALOG_PHB_FBK"
+ R10 2
+ U2 11
+ R9 2
+Net 6 "PHC" "PHC"
+ J4 5
+ Q6 2
+ R11 1
+ C14 2
+ U6 6
+ Q5 3
+Net 7 "PHB" "PHB"
+ C13 2
+ U5 6
+ Q4 2
+ Q3 3
+ J4 4
+ R9 1
+Net 9 "+12V" "+12V"
+ J4 1
+ C19 1
+ D4 1
+ U6 1
+ U1 3
+ C1 1
+ J3 1
+ C17 1
+ D3 1
+ C20 1
+ D2 1
+ U4 1
+ Q1 2
+ U5 1
+ R13 1
+ C18 1
+ Q3 2
+ Q5 2
+ D1 2
+ C21 1
+Net 10 "PHA" "PHA"
+ J4 3
+ Q2 2
+ R6 1
+ Q1 3
+ U4 6
+ C12 2
+Net 11 "GND" "GND"
+ R14 1
+ J1 3
+ C5 1
+ R34 2
+ J1 5
+ C6 1
+ R36 1
+ U5 4
+ C17 2
+ U3 11
+ C19 2
+ J3 2
+ C2 2
+ C1 2
+ U3 5
+ C11 2
+ R37 1
+ R7 1
+ U2 23
+ R10 1
+ C10 2
+ U2 35
+ R23 2
+ C20 2
+ C24 2
+ U2 8
+ C23 2
+ C3 2
+ C21 2
+ J4 2
+ U2 47
+ J5 6
+ C7 2
+ C8 2
+ C9 2
+ R5 2
+ C4 2
+ R12 1
+ J2 5
+ C15 2
+ C22 2
+ U4 4
+ U6 4
+ C16 2
+ U1 1
+Net 12 "" ""
+ R23 1
+ U3 3
+ R22 2
+ C10 1
+Net 13 "+3.3V" "+3.3V"
+ C22 1
+ U3 4
+ U2 9
+ R22 1
+ R33 1
+ C16 1
+ J1 1
+ R18 1
+ R21 1
+ R20 1
+ U2 48
+ U1 2
+ U1 4
+ C2 1
+ U2 36
+ R3 1
+ C23 1
+ C24 1
+ U2 24
+ R4 1
+ R1 1
+Net 17 "I2C_SCL" "I2C_SCL"
+ J5 5
+ U2 22
+ R1 2
+Net 18 "DIG_OUT_DAC" "DIG_OUT_DAC"
+ U2 16
+ R8 2
+Net 19 "OUT_TACH" "OUT_TACH"
+ J5 2
+ U2 15
+Net 20 "DIG_IN_PWM" "DIG_IN_PWM"
+ R5 1
+ R4 2
+ U2 14
+ R2 2
+ C3 1
+Net 21 "DIG_HALL_2" "DIG_HALL_2"
+ R15 2
+ C9 1
+ U2 18
+Net 22 "DIG_HALL_0" "DIG_HALL_0"
+ U2 19
+ R17 2
+ C7 1
+Net 23 "" ""
+ R32 1
+ U6 5
+Net 24 "" ""
+ R32 2
+ Q6 1
+Net 25 "" ""
+ Q5 1
+ R31 2
+Net 30 "" ""
+ R28 1
+ U4 5
+Net 31 "" ""
+ Q2 1
+ R28 2
+Net 32 "" ""
+ U4 7
+ R27 1
+Net 33 "" ""
+ Q1 1
+ R27 2
+Net 34 "" ""
+ U6 7
+ R31 1
+Net 35 "" ""
+ U5 5
+ R30 1
+Net 36 "" ""
+ R29 1
+ U5 7
+Net 37 "" ""
+ Q3 1
+ R29 2
+Net 38 "" ""
+ Q4 1
+ R30 2
+Net 39 "" ""
+ U5 8
+ D3 2
+ C13 1
+Net 40 "" ""
+ U2 37
+ J1 4
+Net 45 "" ""
+ R24 1
+ U3 14
+ R26 2
+Net 46 "" ""
+ R25 1
+ R35 2
+ U3 12
+Net 51 "" ""
+ J1 2
+ U2 34
+Net 53 "DIG_NOT_FLT" "DIG_NOT_FLT"
+ U3 1
+ U2 25
+Net 56 "ANALOG_I_FBK" "ANALOG_I_FBK"
+ U3 2
+ C11 1
+ U2 17
+ R24 2
+Net 57 "DIG_AH" "DIG_AH"
+ U2 29
+ U4 2
+Net 58 "" ""
+ C6 2
+ U2 6
+ X1 1
+Net 59 "" ""
+ C5 2
+ X1 2
+ U2 5
+Net 60 "DIG_CL" "DIG_CL"
+ U2 28
+ U6 3
+Net 61 "DIG_BL" "DIG_BL"
+ U2 27
+ U5 3
+Net 62 "DIG_AL" "DIG_AL"
+ U4 3
+ U2 26
+Net 63 "DIG_CH" "DIG_CH"
+ U2 31
+ U6 2
+Net 68 "NRST" "NRST"
+ U2 7
+ J1 10
+Net 69 "DIG_BH" "DIG_BH"
+ U2 30
+ U5 2
+Net 70 "I_SUM" "I_SUM"
+ R37 2
+ C18 2
+ Q6 3
+ R35 1
+ Q2 3
+ Q4 3
+Net 71 "" ""
+ C14 1
+ U6 8
+ D4 2
+Net 72 "" ""
+ D2 2
+ C12 1
+ U4 8
+Net 73 "I2C_SDA" "I2C_SDA"
+ J5 4
+ R3 2
+ U2 21
+Net 74 "OUT_DAC" "OUT_DAC"
+ C4 1
+ J5 3
+ R8 1
+Net 75 "IN_PWM" "IN_PWM"
+ R2 1
+ J5 1
+Net 76 "+5V" "+5V"
+ R19 2
+ D1 1
+ J2 1
+Net 77 "USB_D-" "USB_D-"
+ U2 32
+ J2 2
+Net 78 "UNUSED" "UNUSED"
+ U3 7
+ U3 6
+Net 79 "V_REF" "V_REF"
+ U3 8
+ U3 9
+ R25 2
+Net 80 "IN_HALL_0" "IN_HALL_0"
+ J3 3
+ R17 1
+ R18 2
+Net 81 "IN_HALL_2" "IN_HALL_2"
+ J3 5
+ R15 1
+ R21 2
+Net 82 "DIG_HALL_1" "DIG_HALL_1"
+ U2 20
+ C8 1
+ R16 2
+Net 83 "IN_HALL_1" "IN_HALL_1"
+ J3 4
+ R20 2
+ R16 1
+Net 84 "" ""
+ U3 13
+ R36 2
+ R26 1
+Net 85 "ANALOG_PHC_FBK" "ANALOG_PHC_FBK"
+ R11 2
+ R12 2
+ U2 12
+Net 86 "ANALOG_PHA_FBK" "ANALOG_PHA_FBK"
+ R6 2
+ R7 2
+ U2 10
+}
+#End

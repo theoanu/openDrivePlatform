@@ -1,0 +1,175 @@
+eeschema (2012-01-19 BZR 3256)-stable  >> Creation date: 11/7/2012 9:33:52 PM
+
+#Cmp ( order = Reference )
+| C1         0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C2         0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C3         1nF 50V     ; Murata Electronics North America; GRM188R71H102KA01D
+| C4         1nF 50V     ; Murata Electronics North America; GRM188R71H102KA01D
+| C5         8pF 50V     ; TDK Corporation; C1608C0G1H080C
+| C6         8pF 50V     ; TDK Corporation; C1608C0G1H080C
+| C7         1nF 50V     ; Murata Electronics North America; GRM188R71H102KA01D
+| C8         1nF 50V     ; Murata Electronics North America; GRM188R71H102KA01D
+| C9         1nF 50V     ; Murata Electronics North America; GRM188R71H102KA01D
+| C10        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C11        1nF 50V     ; Murata Electronics North America; GRM188R71H102KA01D
+| C12        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C13        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C14        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C15        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C16        220uF 6.3V  ; Panasonic Electronic Components; EEE-0JA221WP
+| C17        47uF 25V    ; Kemet       ; EEV476M025A9GAA
+| C18        47uF 25V    ; Kemet       ; EEV476M025A9GAA
+| C19        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C20        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C21        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C22        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C23        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| C24        0.47uF 50V  ; Taiyo Yuden ; UMK107B7474KA-TR
+| D1         DIODE       ; Micro Commercial Inc.; 1N4148WX-TP 
+| D2         DIODE       ; Micro Commercial Inc.; 1N4148WX-TP 
+| D3         DIODE       ; Micro Commercial Inc.; 1N4148WX-TP 
+| D4         DIODE       ; Micro Commercial Inc.; 1N4148WX-TP 
+| J1         CONN_5X2    
+| J2         CONN_5      
+| J3         CONN_5      ; TE Connectivity; 5-1775444-5 
+| J4         CONN_5      ; On Shore Technology Inc; OSTTC050162 
+| J5         CONN_6      ; TE Connectivity; 5-1775444-6 
+| Q1         MOSFET_N_TO220; Alpha & Omega Semiconductor; AOTF240L    
+| Q2         MOSFET_N_TO220; Alpha & Omega Semiconductor; AOTF240L    
+| Q3         MOSFET_N_TO220; Alpha & Omega Semiconductor; AOTF240L    
+| Q4         MOSFET_N_TO220; Alpha & Omega Semiconductor; AOTF240L    
+| Q5         MOSFET_N_TO220; Alpha & Omega Semiconductor; AOTF240L    
+| Q6         MOSFET_N_TO220; Alpha & Omega Semiconductor; AOTF240L    
+| R1         10.0k       ; Yageo       ; RC0603FR-0710KL
+| R2         1.0k        ; Yageo       ; RC0603FR-071KL
+| R3         10.0k       ; Yageo       ; RC0603FR-0710KL
+| R4         10.0k       ; Yageo       ; RC0603FR-0710KL
+| R5         10.0k       ; Yageo       ; RC0603FR-0710KL
+| R6         10.0k       ; Yageo       ; RC0603FR-0710KL
+| R7         1.5k        ; Yageo       ; RC0603FR-071K5L
+| R8         10.0k       ; Yageo       ; RC0603FR-0710KL
+| R9         10.0k       ; Yageo       ; RC0603FR-0710KL
+| R10        1.5k        ; Yageo       ; RC0603FR-071K5L
+| R11        10.0k       ; Yageo       ; RC0603FR-0710KL
+| R12        1.5k        ; Yageo       ; RC0603FR-071K5L
+| R13        10.0k       ; Yageo       ; RC0603FR-0710KL
+| R14        1.5k        ; Yageo       ; RC0603FR-071K5L
+| R15        1.0k        ; Yageo       ; RC0603FR-071KL
+| R16        1.0k        ; Yageo       ; RC0603FR-071KL
+| R17        1.0k        ; Yageo       ; RC0603FR-071KL
+| R18        1.0k        ; Yageo       ; RC0603FR-071KL
+| R19        1.5k        ; Yageo       ; RC0603FR-071K5L
+| R20        1.0k        ; Yageo       ; RC0603FR-071KL
+| R21        1.0k        ; Yageo       ; RC0603FR-071KL
+| R22        1.0k        ; Yageo       ; RC0603FR-071KL
+| R23        10.0k       ; Yageo       ; RC0603FR-0710KL
+| R24        1.0k        ; Yageo       ; RC0603FR-071KL
+| R25        1.0k        ; Yageo       ; RC0603FR-071KL
+| R26        1.0k        ; Yageo       ; RC0603FR-071KL
+| R27        33          ; Yageo       ; RC0603JR-0733RL
+| R28        33          ; Yageo       ; RC0603JR-0733RL
+| R29        33          ; Yageo       ; RC0603JR-0733RL
+| R30        33          ; Yageo       ; RC0603JR-0733RL
+| R31        33          ; Yageo       ; RC0603JR-0733RL
+| R32        33          ; Yageo       ; RC0603JR-0733RL
+| R33        10.0k       ; Yageo       ; RC0603FR-0710KL
+| R34        10.0k       ; Yageo       ; RC0603FR-0710KL
+| R35        1.0k        ; Yageo       ; RC0603FR-071KL
+| R36        1.0k        ; Yageo       ; RC0603FR-071KL
+| R37        0.01        ; Vishay Dale ; WSH2818R0100FEA
+| U1         VREG_4      ; ON Semiconductor; NCP1117LPST33T3G
+| U2         STM32F103XX-48
+| U3         QUAD_OPAMP  ; STMicroelectronics; TS974IDT    
+| U4         MOSFET_DRIVER; International Rectifier; IR2301SPBF  
+| U5         MOSFET_DRIVER; International Rectifier; IR2301SPBF  
+| U6         MOSFET_DRIVER; International Rectifier; IR2301SPBF  
+| X1         CRYSTAL     ; NDK         ; NX5032GA 8MHZ AT-W
+#End Cmp
+
+#Cmp ( order = Value )
+| 0.01         R37       ; Vishay Dale ; WSH2818R0100FEA
+| 0.47uF 50V   C1        ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C2        ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C10       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C12       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C13       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C14       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C15       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C19       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C20       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C21       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C22       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C23       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 0.47uF 50V   C24       ; Taiyo Yuden ; UMK107B7474KA-TR
+| 1.0k         R2        ; Yageo       ; RC0603FR-071KL
+| 1.0k         R15       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R16       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R17       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R18       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R20       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R21       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R22       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R24       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R25       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R26       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R35       ; Yageo       ; RC0603FR-071KL
+| 1.0k         R36       ; Yageo       ; RC0603FR-071KL
+| 1.5k         R7        ; Yageo       ; RC0603FR-071K5L
+| 1.5k         R10       ; Yageo       ; RC0603FR-071K5L
+| 1.5k         R12       ; Yageo       ; RC0603FR-071K5L
+| 1.5k         R14       ; Yageo       ; RC0603FR-071K5L
+| 1.5k         R19       ; Yageo       ; RC0603FR-071K5L
+| 10.0k        R1        ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R3        ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R4        ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R5        ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R6        ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R8        ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R9        ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R11       ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R13       ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R23       ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R33       ; Yageo       ; RC0603FR-0710KL
+| 10.0k        R34       ; Yageo       ; RC0603FR-0710KL
+| 1nF 50V      C3        ; Murata Electronics North America; GRM188R71H102KA01D
+| 1nF 50V      C4        ; Murata Electronics North America; GRM188R71H102KA01D
+| 1nF 50V      C7        ; Murata Electronics North America; GRM188R71H102KA01D
+| 1nF 50V      C8        ; Murata Electronics North America; GRM188R71H102KA01D
+| 1nF 50V      C9        ; Murata Electronics North America; GRM188R71H102KA01D
+| 1nF 50V      C11       ; Murata Electronics North America; GRM188R71H102KA01D
+| 220uF 6.3V   C16       ; Panasonic Electronic Components; EEE-0JA221WP
+| 33           R27       ; Yageo       ; RC0603JR-0733RL
+| 33           R28       ; Yageo       ; RC0603JR-0733RL
+| 33           R29       ; Yageo       ; RC0603JR-0733RL
+| 33           R30       ; Yageo       ; RC0603JR-0733RL
+| 33           R31       ; Yageo       ; RC0603JR-0733RL
+| 33           R32       ; Yageo       ; RC0603JR-0733RL
+| 47uF 25V     C17       ; Kemet       ; EEV476M025A9GAA
+| 47uF 25V     C18       ; Kemet       ; EEV476M025A9GAA
+| 8pF 50V      C5        ; TDK Corporation; C1608C0G1H080C
+| 8pF 50V      C6        ; TDK Corporation; C1608C0G1H080C
+| CONN_5       J2        
+| CONN_5       J3        ; TE Connectivity; 5-1775444-5 
+| CONN_5       J4        ; On Shore Technology Inc; OSTTC050162 
+| CONN_5X2     J1        
+| CONN_6       J5        ; TE Connectivity; 5-1775444-6 
+| CRYSTAL      X1        ; NDK         ; NX5032GA 8MHZ AT-W
+| DIODE        D1        ; Micro Commercial Inc.; 1N4148WX-TP 
+| DIODE        D2        ; Micro Commercial Inc.; 1N4148WX-TP 
+| DIODE        D3        ; Micro Commercial Inc.; 1N4148WX-TP 
+| DIODE        D4        ; Micro Commercial Inc.; 1N4148WX-TP 
+| MOSFET_DRIVER U4        ; International Rectifier; IR2301SPBF  
+| MOSFET_DRIVER U5        ; International Rectifier; IR2301SPBF  
+| MOSFET_DRIVER U6        ; International Rectifier; IR2301SPBF  
+| MOSFET_N_TO220 Q1        ; Alpha & Omega Semiconductor; AOTF240L    
+| MOSFET_N_TO220 Q2        ; Alpha & Omega Semiconductor; AOTF240L    
+| MOSFET_N_TO220 Q3        ; Alpha & Omega Semiconductor; AOTF240L    
+| MOSFET_N_TO220 Q4        ; Alpha & Omega Semiconductor; AOTF240L    
+| MOSFET_N_TO220 Q5        ; Alpha & Omega Semiconductor; AOTF240L    
+| MOSFET_N_TO220 Q6        ; Alpha & Omega Semiconductor; AOTF240L    
+| QUAD_OPAMP   U3        ; STMicroelectronics; TS974IDT    
+| STM32F103XX-48 U2        
+| VREG_4       U1        ; ON Semiconductor; NCP1117LPST33T3G
+#End Cmp
+
+#End List

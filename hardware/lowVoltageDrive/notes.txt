@@ -1,0 +1,11 @@
+Future revisions:
+CAN transceiver: SN65HVD232DR
+
+Current revision:
+
+- In order to increase the gain of the opamp to 10:
+ - Change R25, R26 to 10k
+
+- In order to increase the resolution of the ADCs:
+ - Change R7, R10, R12, and R14 to 3.3k
+
