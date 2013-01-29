@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Wl -nostartfiles -g -Map=lowVoltageDrive.map -O1 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\lowVoltageDrive -TC:\CooCox\CoIDE\configuration\ProgramData\lowVoltageDrive/arm-gcc-link.ld -g">
+      <target file="lowVoltageDrive.elf" lastModified="13c7f1e117b">
+         <source file="..\obj\stm32f10x_rtc.o" lastModified="13c7ecb6e52"/>
+         <source file="..\obj\semihosting.o" lastModified="13c7ecb6ebd"/>
+         <source file="..\obj\startup_stm32f10x_ld.o" lastModified="13c7ecb6f6b"/>
+         <source file="..\obj\stm32f10x_tim.o" lastModified="13c7ecb7173"/>
+         <source file="..\obj\core_cm3.o" lastModified="13c7ecb71ed"/>
+         <source file="..\obj\motorDc.o" lastModified="13c7ecb7282"/>
+         <source file="..\obj\stm32f10x_dbgmcu.o" lastModified="13c7ecb7313"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="13c7ecb73bb"/>
+         <source file="..\obj\stm32f10x_pwr.o" lastModified="13c7ecb745e"/>
+         <source file="..\obj\stm32f10x_can.o" lastModified="13c7ecb75a6"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="13c7ecb7676"/>
+         <source file="..\obj\milliSecTimer.o" lastModified="13c7ecb7704"/>
+         <source file="..\obj\main.o" lastModified="13c7f0f759b"/>
+         <source file="..\obj\stm32f10x_crc.o" lastModified="13c7ecb7821"/>
+         <source file="..\obj\mpwm.o" lastModified="13c7f0f7676"/>
+         <source file="..\obj\rcPwm.o" lastModified="13c7ecb7978"/>
+         <source file="..\obj\printf.o" lastModified="13c7ecb7a62"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="13c7ecb7b42"/>
+         <source file="..\obj\gpio.o" lastModified="13c7ed3a245"/>
+         <source file="..\obj\motor.o" lastModified="13c7ecb7c6c"/>
+         <source file="..\obj\stm32f10x_exti.o" lastModified="13c7ecb7d09"/>
+         <source file="..\obj\stm32f10x_adc.o" lastModified="13c7ecb7e0b"/>
+         <source file="..\obj\osc.o" lastModified="13c7ecb7eca"/>
+         <source file="..\obj\motorBldc.o" lastModified="13c7ecb7fa4"/>
+         <source file="..\obj\stm32f10x_usart.o" lastModified="13c7ecb80e0"/>
+         <source file="..\obj\sh_cmd.o" lastModified="13c7ecb80f9"/>
+         <source file="..\obj\syscalls.o" lastModified="13c7ecb816f"/>
+         <source file="..\obj\stm32f10x_flash.o" lastModified="13c7ecb8278"/>
+         <source file="..\obj\adc.o" lastModified="13c7f1e0ee5"/>
+         <source file="..\obj\stm32f10x_dma.o" lastModified="13c7ecb83b6"/>
+         <source file="..\obj\misc.o" lastModified="13c7ecb8457"/>
+         <source file="..\obj\stm32f10x_wwdg.o" lastModified="13c7ecb84f6"/>
+         <source file="..\obj\stm32f10x_spi.o" lastModified="13c7ecb85e0"/>
+         <source file="..\obj\stm32f10x_i2c.o" lastModified="13c7ecb8703"/>
+         <source file="..\obj\stm32f10x_bkp.o" lastModified="13c7ecb87bf"/>
+         <source file="..\obj\stm32f10x_iwdg.o" lastModified="13c7ecb8853"/>
+      </target>
+   </processor>
+</history>
