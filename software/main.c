@@ -39,7 +39,7 @@ main(void)
 	RCPWM_initRcPwm();
 
 	// Initialize motor
-	MOT_defineMotorType(MOT_DC);
+	MOT_defineMotorType(MOT_BLDC);
 
 	// Initialize UART/CLI
 

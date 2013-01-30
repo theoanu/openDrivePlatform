@@ -34,7 +34,7 @@ void
 MOT_defineMotorType(_MOT_motorType motorType)
 {
 	// Stop all motor activity
-	//BLDC_stopMotor();
+	BLDC_stopMotor();
 	MDC_stopMotor();
 
 	// Change the motor type
@@ -67,11 +67,11 @@ MOT_initMotor(void)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_initMotor();
+			BLDC_initMotor();
 			break;
 
 		default:
-			//BLDC_initMotor();
+			BLDC_initMotor();
 			break;
 	}
 
@@ -100,11 +100,11 @@ MOT_startMotor(void)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_startMotor();
+			BLDC_startMotor();
 			break;
 
 		default:
-			//BLDC_startMotor();
+			BLDC_startMotor();
 			break;
 	}
 
@@ -133,11 +133,11 @@ MOT_stopMotor(void)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_stopMotor();
+			BLDC_stopMotor();
 			break;
 
 		default:
-			//BLDC_stopMotor();
+			BLDC_stopMotor();
 			break;
 	}
 
@@ -173,11 +173,11 @@ MOT_commandDutyCycle(uint16_t dutyCycle)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_commandDutyCycle(dutyCycle);
+			BLDC_commandDutyCycle(dutyCycle);
 			break;
 
 		default:
-			//BLDC_stopMotor();
+			BLDC_stopMotor();
 			break;
 	}
 
@@ -207,11 +207,11 @@ MOT_commandDirection(_MOT_motorDirection direction)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_commandDirection(direction);
+			BLDC_commandDirection(direction);
 			break;
 
 		default:
-			//BLDC_commandDirection(direction);
+			BLDC_commandDirection(direction);
 			break;
 	}
 

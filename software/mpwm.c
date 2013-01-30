@@ -371,7 +371,6 @@ MPWM_setPhaseDutyCycle(uint8_t phase, uint8_t state, uint16_t dutyCycle)
 void
 TIM1_CC_IRQHandler(void)
 {
-	GPIO_setOutputPin(GPIO_PORT_A, 5);
 	ADC_startAdcConversion();
 
 	TIM1->SR = 0;

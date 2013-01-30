@@ -11,6 +11,7 @@
 #include "motorBldc.h"
 #include "mpwm.h"
 #include "gpio.h"
+#include "adc.h"
 
 /* Global variables */
 typedef struct{
@@ -36,6 +37,7 @@ _bldc_motor_command BLDC_command;
 void BLDC_commutate(void);
 void BLDC_initPositionSensors(void);
 void BLDC_determineSector(void);
+void BLDC_adcInterrupt(void);
 
 /* This is a complete table that lists all of the possible translations
  * from hall sensor inputs to sectors. */
@@ -77,6 +79,11 @@ BLDC_initMotor(void)
 	BLDC_commandDirection(BLDC_POS);
 
 	BLDC_initPositionSensors();
+
+	// Assign the ADC1 Interrupt to the BLDC_adcInterrupt() function
+	//	and enable the interrupt.  Whenever an ADC1 interrupt occurs,
+	//	it will execute the BLDC_adcInterrupt() code from this file.
+	ADC_initAdc1Interrupt(&BLDC_adcInterrupt);
 
 	return;
 } // END BLDC_initMotor()
@@ -332,4 +339,12 @@ BLDC_getMotorState(void){
 	return BLDC_motor.state;
 }
 
+void
+BLDC_adcInterrupt(void)
+{
+	GPIO_setOutputPin(GPIO_PORT_A, 5);
+	GPIO_clearOutputPin(GPIO_PORT_A, 5);
+
+	return;
+}
 
