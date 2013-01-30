@@ -115,10 +115,6 @@
          <include file="..\..\..\gpio.h"/>
          <include file="..\..\..\adc.h"/>
       </source>
-      <source file="..\..\..\adc.c" lastModified="13c7f1dff4c">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
-         <include file="..\..\..\adc.h"/>
-      </source>
       <source file="..\..\..\semihosting\sh_cmd.s" lastModified="13c219ef781">
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_crc.h" lastModified="13c219f19a9">
@@ -156,10 +152,10 @@
          <include file="..\..\..\rcPwm.h"/>
          <include file="..\..\..\adc.h"/>
       </source>
-      <source file="..\..\..\rcPwm.h" lastModified="13c6d05748e">
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_flash.c" lastModified="13c219f4882">
          <include file="..\..\..\stm_lib\inc\stm32f10x_flash.h"/>
+      </source>
+      <source file="..\..\..\rcPwm.h" lastModified="13c6d05748e">
       </source>
       <source file="..\..\..\osc.h" lastModified="13c36d669d8">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
@@ -192,12 +188,12 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\osc.c" lastModified="13c36f2db18">
-         <include file="..\..\..\osc.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_pwr.c" lastModified="13c219f11f8">
          <include file="..\..\..\stm_lib\inc\stm32f10x_pwr.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\osc.c" lastModified="13c36f2db18">
+         <include file="..\..\..\osc.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="13c219f541c">
          <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
@@ -223,16 +219,16 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_dma.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h" lastModified="13c219f2c8b">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_exti.h" lastModified="13c219f201f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="13c219f15e2">
+      <source file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h" lastModified="13c219f2c8b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_tim.h" lastModified="13c219f4d8f">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="13c219f15e2">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\motorDc.c" lastModified="13c7ec57ccd">
@@ -241,6 +237,14 @@
          <include file="..\..\..\motorDc.h"/>
          <include file="..\..\..\mpwm.h"/>
          <include file="..\..\..\gpio.h"/>
+      </source>
+      <source file="..\..\..\motorBldc.c" lastModified="13c8945f838">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
+         <include file="..\..\..\stm_lib\inc\misc.h"/>
+         <include file="..\..\..\motorBldc.h"/>
+         <include file="..\..\..\mpwm.h"/>
+         <include file="..\..\..\gpio.h"/>
+         <include file="..\..\..\adc.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_crc.c" lastModified="13c219f19c7">
          <include file="..\..\..\stm_lib\inc\stm32f10x_crc.h"/>
@@ -367,10 +371,10 @@
       <source file="..\..\..\stm_lib\inc\misc.h" lastModified="13c219f808d">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\rcPwm.h" lastModified="13c6d05748e">
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_flash.c" lastModified="13c219f4882">
          <include file="..\..\..\stm_lib\inc\stm32f10x_flash.h"/>
+      </source>
+      <source file="..\..\..\rcPwm.h" lastModified="13c6d05748e">
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_dbgmcu.c" lastModified="13c219f4483">
          <include file="..\..\..\stm_lib\inc\stm32f10x_dbgmcu.h"/>
@@ -392,12 +396,12 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_can.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\osc.c" lastModified="13c36f2db18">
-         <include file="..\..\..\osc.h"/>
-      </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_pwr.c" lastModified="13c219f11f8">
          <include file="..\..\..\stm_lib\inc\stm32f10x_pwr.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\..\osc.c" lastModified="13c36f2db18">
+         <include file="..\..\..\osc.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="13c219f541c">
          <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
@@ -416,16 +420,16 @@
          <include file="..\..\..\stm_lib\inc\stm32f10x_dma.h"/>
          <include file="..\..\..\stm_lib\inc\stm32f10x_rcc.h"/>
       </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h" lastModified="13c219f2c8b">
-         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
-      </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_exti.h" lastModified="13c219f201f">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
-      <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="13c219f15e2">
+      <source file="..\..\..\stm_lib\inc\stm32f10x_iwdg.h" lastModified="13c219f2c8b">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_tim.h" lastModified="13c219f4d8f">
+         <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="13c219f15e2">
          <include file="..\..\..\cmsis_boot\stm32f10x.h"/>
       </source>
       <source file="..\..\..\motorDc.c" lastModified="13c7ec57ccd">

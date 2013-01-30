@@ -85,8 +85,8 @@
       <target file="stm32f10x_dma.o" lastModified="13c891b4255">
          <source file="..\..\..\stm_lib\src\stm32f10x_dma.c" lastModified="13c219f2334"/>
       </target>
-      <target file="adc.o" lastModified="13c891b41a9">
-         <source file="..\..\..\adc.c" lastModified="13c7f1dfb64"/>
+      <target file="adc.o" lastModified="13c89540537">
+         <source file="..\..\..\adc.c" lastModified="13c8953cf10"/>
       </target>
       <target file="stm32f10x_crc.o" lastModified="13c891b3691">
          <source file="..\..\..\stm_lib\src\stm32f10x_crc.c" lastModified="13c219f19c7"/>
@@ -97,8 +97,8 @@
       <target file="semihosting.o" lastModified="13c891b2db2">
          <source file="..\..\..\semihosting\semihosting.c" lastModified="13c5b769cf5"/>
       </target>
-      <target file="motorBldc.o" lastModified="13c8921c74c">
-         <source file="..\..\..\motorBldc.c" lastModified="13c89219c10"/>
+      <target file="motorBldc.o" lastModified="13c89475489">
+         <source file="..\..\..\motorBldc.c" lastModified="13c8945f838"/>
       </target>
       <target file="stm32f10x_i2c.o" lastModified="13c891b45ab">
          <source file="..\..\..\stm_lib\src\stm32f10x_i2c.c" lastModified="13c219f4194"/>

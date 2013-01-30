@@ -15,9 +15,9 @@
 
 /* Global variables */
 typedef struct{
-	uint8_t state;
-	uint8_t sector;
-	uint16_t dutyCycle;
+	volatile uint8_t state;
+	volatile uint8_t sector;
+	volatile uint16_t dutyCycle;
 	_BLDC_motorDirection direction;
 
 	_BLDC_sensor sensor;
@@ -30,7 +30,7 @@ typedef struct{
 	uint16_t dutyCycle;
 }_bldc_motor_command;
 
-_bldc_motor BLDC_motor;
+volatile _bldc_motor BLDC_motor;
 _bldc_motor_command BLDC_command;
 
 // Used internally to motor.c, "private"
@@ -241,7 +241,7 @@ BLDC_determineSector(void)
  *
  * Returns:		none
  *
- * Globals affected:	BLDC_motor.dutyCycle
+ * Globals affected:	BLDC_command.dutyCycle
  **************************************************************/
 void
 BLDC_commandDutyCycle(uint16_t dutyCycle)
@@ -339,11 +339,49 @@ BLDC_getMotorState(void){
 	return BLDC_motor.state;
 }
 
+/***************************************************************
+ * Function:	uint8_t BLDC_adcInterrupt(void)
+ *
+ * Purpose:		This function is executed when all of the phase
+ * 					ADC's have been sampled and converted.
+ *
+ * Parameters:	none
+ *
+ * Returns:		none
+ *
+ * Globals affected:	none
+ **************************************************************/
 void
 BLDC_adcInterrupt(void)
 {
-	GPIO_setOutputPin(GPIO_PORT_A, 5);
-	GPIO_clearOutputPin(GPIO_PORT_A, 5);
+	switch(BLDC_motor.state)
+	{
+		case BLDC_LOCKED:
+		{
+			break;
+		}
+
+		case BLDC_STOPPED:
+		{
+			break;
+		}
+
+		case BLDC_STARTING:
+		{
+			break;
+		}
+
+		case BLDC_RUNNING:
+		{
+			break;
+		}
+
+		default:
+		{
+			break;
+		}
+
+	}
 
 	return;
 }
