@@ -12,7 +12,8 @@
 #include "motorDc.h"
 
 /* Global variables */
-typedef struct{
+typedef struct
+{
 	_MOT_motorType type;
 } _motor;
 
@@ -43,7 +44,7 @@ MOT_defineMotorType(_MOT_motorType motorType)
 	MOT_initMotor();
 
 	return;
-}
+} // END MOT_defineMotorType()
 
 /***************************************************************
  * Function:	void MOT_initMotor(void)
@@ -76,7 +77,7 @@ MOT_initMotor(void)
 	}
 
 	return;
-}
+} // END MOT_initMotor()
 
 /***************************************************************
  * Function:	void MOT_startMotor(void)
@@ -109,7 +110,7 @@ MOT_startMotor(void)
 	}
 
 	return;
-}
+} // END MOT_startMotor()
 
 /***************************************************************
  * Function:	void MOT_stopMotor(void)
@@ -142,7 +143,7 @@ MOT_stopMotor(void)
 	}
 
 	return;
-}
+} // END MOT_stopMotor()
 
 /***************************************************************
  * Function:	void MOT_commandDutyCycle(uint16_t dutyCycle)
@@ -182,7 +183,7 @@ MOT_commandDutyCycle(uint16_t dutyCycle)
 	}
 
 	return;
-}
+} // END MOT_commandDutyCycle
 
 /***************************************************************
  * Function:	void MOT_commandDirection(_MOT_motorDirection direction)
@@ -216,5 +217,5 @@ MOT_commandDirection(_MOT_motorDirection direction)
 	}
 
 	return;
-}
+} // END MOT_commandDirection()
 
