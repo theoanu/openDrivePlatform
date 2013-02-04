@@ -6,18 +6,24 @@
  *	even the implied warranty of MERCHANTABILITY
  *	or FITNESS FOR A PARTICULAR PURPOSE.
 *************************************************/
-#include "stm32f10x_adc.h"
 #include "misc.h"
 #include "motorBldc.h"
 #include "mpwm.h"
 #include "gpio.h"
 #include "adc.h"
+#include "milliSecTimer.h"
+
+#define NULL	0
 
 /* Global variables */
 typedef struct{
 	volatile uint8_t state;
 	volatile uint8_t sector;
 	volatile uint16_t dutyCycle;
+	volatile uint32_t startTimeAbs;
+	volatile uint32_t lockUntilTimeAbs;
+	volatile uint16_t phaseA, phaseB, phaseC;
+	volatile uint16_t *dormantPhasePtr;
 	_BLDC_motorDirection direction;
 
 	_BLDC_sensor sensor;
@@ -150,7 +156,10 @@ BLDC_startMotor(void)
 		BLDC_motor.sector = 0;
 		BLDC_motor.state = BLDC_STARTING;
 
+		BLDC_motor.startTimeAbs = MSTMR_getMilliSeconds();
+
 		BLDC_determineSector();
+		BLDC_commutate();
 	}
 
 	return;
@@ -307,17 +316,47 @@ BLDC_commutate(void)
 	const uint8_t loPhaseTable[] = {MPWM_PH_B, MPWM_PH_C, MPWM_PH_C, MPWM_PH_A, MPWM_PH_A, MPWM_PH_B};
 	const uint8_t dormantPhaseTable[] = {MPWM_PH_C, MPWM_PH_B, MPWM_PH_A, MPWM_PH_C, MPWM_PH_B, MPWM_PH_A};
 
+	// The dormant phase is dormant in either direction
+	MPWM_setPhaseDutyCycle(dormantPhaseTable[BLDC_motor.sector], MPWM_DORMANT, BLDC_motor.dutyCycle);
+
 	// Load each phase with the appropriate duty cycle based on the sector and direction of the motor
 	if(BLDC_motor.direction){
 		MPWM_setPhaseDutyCycle(hiPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, BLDC_motor.dutyCycle);
 		MPWM_setPhaseDutyCycle(loPhaseTable[BLDC_motor.sector], MPWM_LO_STATE, BLDC_motor.dutyCycle);
-		MPWM_setPhaseDutyCycle(dormantPhaseTable[BLDC_motor.sector], MPWM_DORMANT, BLDC_motor.dutyCycle);
-	}else
+	}
+	else
 	{
+		// Reverse the direction of current flow when the motor should be rotating in the other direction
 		MPWM_setPhaseDutyCycle(hiPhaseTable[BLDC_motor.sector], MPWM_LO_STATE, BLDC_motor.dutyCycle);
 		MPWM_setPhaseDutyCycle(loPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, BLDC_motor.dutyCycle);
-		MPWM_setPhaseDutyCycle(dormantPhaseTable[BLDC_motor.sector], MPWM_DORMANT, BLDC_motor.dutyCycle);
 	} // END if
+
+	// Indicate which phase is dormant for later use by the ADC module
+	switch(dormantPhaseTable[BLDC_motor.sector])
+	{
+		case MPWM_PH_A:
+		{
+			BLDC_motor.dormantPhasePtr = &BLDC_motor.phaseA;
+			break;
+		}
+
+		case MPWM_PH_B:
+		{
+			BLDC_motor.dormantPhasePtr = &BLDC_motor.phaseB;
+			break;
+		}
+
+		case MPWM_PH_C:
+		{
+			BLDC_motor.dormantPhasePtr = &BLDC_motor.phaseC;
+			break;
+		}
+
+		default:
+		{
+			BLDC_motor.dormantPhasePtr = NULL;
+		}
+	}
 
 	return;
 } //END BLDC_commutate
@@ -354,10 +393,24 @@ BLDC_getMotorState(void){
 void
 BLDC_adcInterrupt(void)
 {
+	// retrieve phase adc values
+	// TODO: Could probably do this using DMA more efficiently
+	BLDC_motor.phaseA = ADC_getVoltage(ADC_PH_A);
+	BLDC_motor.phaseB = ADC_getVoltage(ADC_PH_B);
+	BLDC_motor.phaseC = ADC_getVoltage(ADC_PH_C);
+
+	uint16_t neutralVoltage = ADC_getVoltage(ADC_V_BUS) >> 1;
+
 	switch(BLDC_motor.state)
 	{
 		case BLDC_LOCKED:
 		{
+			// When the locked timer expires, then shift
+			//	the motor into the "stopped" state
+			if(MSTMR_getMilliSeconds() > BLDC_motor.lockUntilTimeAbs){
+				BLDC_motor.state = BLDC_STOPPED;
+			}
+
 			break;
 		}
 
@@ -368,16 +421,25 @@ BLDC_adcInterrupt(void)
 
 		case BLDC_STARTING:
 		{
+			// Determine which phase is dormant
+
+			// Apply the starting signal to the phases
+
+			// When the motor has reached a sufficient speed,
+			//	then shift the motor into the "running" mode
 			break;
 		}
 
 		case BLDC_RUNNING:
 		{
+			// Apply the running signal to the phases
+
 			break;
 		}
 
 		default:
 		{
+			// Should never get here
 			break;
 		}
 

@@ -97,8 +97,8 @@
       <target file="semihosting.o" lastModified="13c891b2db2">
          <source file="..\..\..\semihosting\semihosting.c" lastModified="13c5b769cf5"/>
       </target>
-      <target file="motorBldc.o" lastModified="13c89475489">
-         <source file="..\..\..\motorBldc.c" lastModified="13c8945f838"/>
+      <target file="motorBldc.o" lastModified="13ca2119633">
+         <source file="..\..\..\motorBldc.c" lastModified="13ca2117e14"/>
       </target>
       <target file="stm32f10x_i2c.o" lastModified="13c891b45ab">
          <source file="..\..\..\stm_lib\src\stm32f10x_i2c.c" lastModified="13c219f4194"/>

@@ -14,7 +14,7 @@ c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/
 Allocating common symbols
 Common symbol       size              file
 
-BLDC_motor          0xe               ..\obj\motorBldc.o
+BLDC_motor          0x24              ..\obj\motorBldc.o
 rcPwm               0xc               ..\obj\rcPwm.o
 BLDC_command        0x4               ..\obj\motorBldc.o
 MPWM_motorPhase     0x3               ..\obj\mpwm.o
@@ -665,11 +665,11 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\motorBldc.o
  .data          0x00000000        0x0 ..\obj\motorBldc.o
  .text.BLDC_startMotor
-                0x00000000       0x38 ..\obj\motorBldc.o
+                0x00000000       0x4c ..\obj\motorBldc.o
  .text.BLDC_determineSector
-                0x00000000       0x90 ..\obj\motorBldc.o
+                0x00000000       0x94 ..\obj\motorBldc.o
  .text.BLDC_commutate
-                0x00000000      0x1b8 ..\obj\motorBldc.o
+                0x00000000      0x1f0 ..\obj\motorBldc.o
  .text.BLDC_getMotorState
                 0x00000000       0x18 ..\obj\motorBldc.o
  .text          0x00000000        0x0 ..\obj\stm32f10x_usart.o
@@ -804,8 +804,6 @@ Discarded input sections
                 0x00000000       0x4c ..\obj\stm32f10x_flash.o
  .text          0x00000000        0x0 ..\obj\adc.o
  .data          0x00000000        0x0 ..\obj\adc.o
- .text.ADC_getVoltage
-                0x00000000       0x98 ..\obj\adc.o
  .text.ADC_initAdc2Interrupt
                 0x00000000       0x38 ..\obj\adc.o
  .text.ADC_deinitAdc1Interrupt
@@ -1047,7 +1045,7 @@ Linker script and memory map
 
                 0x20002800                _eram = 0x20002800
 
-.text           0x08000000     0x2378
+.text           0x08000000     0x2490
  *(.isr_vector .isr_vector.*)
  .isr_vector    0x08000000      0x10c ..\obj\startup_stm32f10x_ld.o
                 0x08000000                g_pfnVectors
@@ -1217,110 +1215,113 @@ Linker script and memory map
                 0x0800184c       0x20 ..\obj\motorBldc.o
                 0x0800184c                BLDC_commandDirection
  .text.BLDC_adcInterrupt
-                0x0800186c       0x34 ..\obj\motorBldc.o
+                0x0800186c       0xb4 ..\obj\motorBldc.o
                 0x0800186c                BLDC_adcInterrupt
- .text          0x080018a0       0x28 ..\obj\sh_cmd.o
-                0x080018a0                SH_DoCommand
-                0x080018b2                HardFault_Handler
+ .text          0x08001920       0x28 ..\obj\sh_cmd.o
+                0x08001920                SH_DoCommand
+                0x08001932                HardFault_Handler
  .text.FLASH_SetLatency
-                0x080018c8       0x40 ..\obj\stm32f10x_flash.o
-                0x080018c8                FLASH_SetLatency
+                0x08001948       0x40 ..\obj\stm32f10x_flash.o
+                0x08001948                FLASH_SetLatency
  .text.FLASH_PrefetchBufferCmd
-                0x08001908       0x44 ..\obj\stm32f10x_flash.o
-                0x08001908                FLASH_PrefetchBufferCmd
+                0x08001988       0x44 ..\obj\stm32f10x_flash.o
+                0x08001988                FLASH_PrefetchBufferCmd
  .text.NVIC_EnableIRQ
-                0x0800194c       0x38 ..\obj\adc.o
+                0x080019cc       0x38 ..\obj\adc.o
  .text.ADC_initAdc
-                0x08001984       0x18 ..\obj\adc.o
-                0x08001984                ADC_initAdc
+                0x08001a04       0x18 ..\obj\adc.o
+                0x08001a04                ADC_initAdc
  .text.ADC_initAdc1
-                0x0800199c       0xa0 ..\obj\adc.o
-                0x0800199c                ADC_initAdc1
+                0x08001a1c       0xa0 ..\obj\adc.o
+                0x08001a1c                ADC_initAdc1
  .text.ADC_initAdc2
-                0x08001a3c       0xa0 ..\obj\adc.o
-                0x08001a3c                ADC_initAdc2
+                0x08001abc       0xa0 ..\obj\adc.o
+                0x08001abc                ADC_initAdc2
  .text.ADC_startAdcConversion
-                0x08001adc       0x3c ..\obj\adc.o
-                0x08001adc                ADC_startAdcConversion
+                0x08001b5c       0x3c ..\obj\adc.o
+                0x08001b5c                ADC_startAdcConversion
+ .text.ADC_getVoltage
+                0x08001b98       0x98 ..\obj\adc.o
+                0x08001b98                ADC_getVoltage
  .text.ADC_initAdc1Interrupt
-                0x08001b18       0x38 ..\obj\adc.o
-                0x08001b18                ADC_initAdc1Interrupt
+                0x08001c30       0x38 ..\obj\adc.o
+                0x08001c30                ADC_initAdc1Interrupt
  .text.ADC1_2_IRQHandler
-                0x08001b50       0xe0 ..\obj\adc.o
-                0x08001b50                ADC1_2_IRQHandler
+                0x08001c68       0xe0 ..\obj\adc.o
+                0x08001c68                ADC1_2_IRQHandler
  .text.NVIC_Init
-                0x08001c30       0xe8 ..\obj\misc.o
-                0x08001c30                NVIC_Init
- .text          0x08001d18      0x21c c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_addsubsf3.o)
-                0x08001d18                __aeabi_frsub
-                0x08001d20                __subsf3
-                0x08001d20                __aeabi_fsub
-                0x08001d24                __aeabi_fadd
-                0x08001d24                __addsf3
-                0x08001e84                __aeabi_ui2f
-                0x08001e84                __floatunsisf
-                0x08001e8c                __aeabi_i2f
-                0x08001e8c                __floatsisf
-                0x08001ea8                __aeabi_ul2f
-                0x08001ea8                __floatundisf
-                0x08001eb8                __aeabi_l2f
-                0x08001eb8                __floatdisf
- .text          0x08001f34      0x2a0 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_muldivsf3.o)
-                0x08001f34                __mulsf3
-                0x08001f34                __aeabi_fmul
-                0x0800209c                __aeabi_fdiv
-                0x0800209c                __divsf3
- .text          0x080021d4       0xec c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_cmpsf2.o)
-                0x080021d4                __gesf2
-                0x080021d4                __gtsf2
-                0x080021dc                __lesf2
-                0x080021dc                __ltsf2
-                0x080021e4                __nesf2
-                0x080021e4                __eqsf2
-                0x080021e4                __cmpsf2
-                0x08002244                __aeabi_cfrcmple
-                0x0800224c                __aeabi_cfcmpeq
-                0x0800224c                __aeabi_cfcmple
-                0x0800225c                __aeabi_fcmpeq
-                0x08002270                __aeabi_fcmplt
-                0x08002284                __aeabi_fcmple
-                0x08002298                __aeabi_fcmpge
-                0x080022ac                __aeabi_fcmpgt
- .text          0x080022c0       0x40 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_fixunssfsi.o)
-                0x080022c0                __fixunssfsi
-                0x080022c0                __aeabi_f2uiz
+                0x08001d48       0xe8 ..\obj\misc.o
+                0x08001d48                NVIC_Init
+ .text          0x08001e30      0x21c c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x08001e30                __aeabi_frsub
+                0x08001e38                __subsf3
+                0x08001e38                __aeabi_fsub
+                0x08001e3c                __aeabi_fadd
+                0x08001e3c                __addsf3
+                0x08001f9c                __aeabi_ui2f
+                0x08001f9c                __floatunsisf
+                0x08001fa4                __aeabi_i2f
+                0x08001fa4                __floatsisf
+                0x08001fc0                __aeabi_ul2f
+                0x08001fc0                __floatundisf
+                0x08001fd0                __aeabi_l2f
+                0x08001fd0                __floatdisf
+ .text          0x0800204c      0x2a0 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x0800204c                __mulsf3
+                0x0800204c                __aeabi_fmul
+                0x080021b4                __aeabi_fdiv
+                0x080021b4                __divsf3
+ .text          0x080022ec       0xec c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_cmpsf2.o)
+                0x080022ec                __gesf2
+                0x080022ec                __gtsf2
+                0x080022f4                __lesf2
+                0x080022f4                __ltsf2
+                0x080022fc                __nesf2
+                0x080022fc                __eqsf2
+                0x080022fc                __cmpsf2
+                0x0800235c                __aeabi_cfrcmple
+                0x08002364                __aeabi_cfcmpeq
+                0x08002364                __aeabi_cfcmple
+                0x08002374                __aeabi_fcmpeq
+                0x08002388                __aeabi_fcmplt
+                0x0800239c                __aeabi_fcmple
+                0x080023b0                __aeabi_fcmpge
+                0x080023c4                __aeabi_fcmpgt
+ .text          0x080023d8       0x40 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+                0x080023d8                __fixunssfsi
+                0x080023d8                __aeabi_f2uiz
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x08002300       0x78 ..\obj\motorBldc.o
-                0x08002300                hallToSector
+ .rodata        0x08002418       0x78 ..\obj\motorBldc.o
+                0x08002418                hallToSector
 
-.vfp11_veneer   0x08002378        0x0
+.vfp11_veneer   0x08002490        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x08002378        0x0
+.v4_bx          0x08002490        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08002378                __exidx_start = .
+                0x08002490                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08002378                __exidx_end = .
-                0x08002378                . = ALIGN (0x4)
-                0x08002378                _etext = .
-                0x08002378                _sidata = .
+                0x08002490                __exidx_end = .
+                0x08002490                . = ALIGN (0x4)
+                0x08002490                _etext = .
+                0x08002490                _sidata = .
 
-.data           0x20000000        0x0 load address 0x08002378
+.data           0x20000000        0x0 load address 0x08002490
                 0x20000000                _sdata = .
  *(.data .data.*)
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _edata = .
 
-.bss            0x20000000       0x50
+.bss            0x20000000       0x64
                 0x20000000                _sbss = .
  *(.bss .bss.*)
  .bss           0x20000000        0x1 ..\obj\motorBldc.o
@@ -1346,19 +1347,20 @@ Linker script and memory map
  *fill*         0x20000035        0x3 00
  COMMON         0x20000038        0x4 ..\obj\osc.o
                 0x20000038                oscillator
- COMMON         0x2000003c       0x14 ..\obj\motorBldc.o
+ COMMON         0x2000003c       0x28 ..\obj\motorBldc.o
                 0x2000003c                BLDC_motor
-                0x2000004c                BLDC_command
-                0x20000050                . = ALIGN (0x4)
-                0x20000050                _ebss = .
+                0x20000060                BLDC_command
+                0x20000064                . = ALIGN (0x4)
+                0x20000064                _ebss = .
 
-.co_stack       0x20000050      0x400
-                0x20000050                . = ALIGN (0x8)
+.co_stack       0x20000064      0x404
+                0x20000068                . = ALIGN (0x8)
+ *fill*         0x20000064        0x4 00
  *(.co_stack .co_stack.*)
- .co_stack      0x20000050      0x400 ..\obj\startup_stm32f10x_ld.o
-                0x20000050                pulStack
-                0x20000450                . = ALIGN (0x4)
-                0x20000450                _end = .
+ .co_stack      0x20000068      0x400 ..\obj\startup_stm32f10x_ld.o
+                0x20000068                pulStack
+                0x20000468                . = ALIGN (0x4)
+                0x20000468                _end = .
 LOAD ..\obj\stm32f10x_rtc.o
 LOAD ..\obj\semihosting.o
 LOAD ..\obj\startup_stm32f10x_ld.o
@@ -1402,7 +1404,7 @@ LOAD c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4
 END GROUP
 OUTPUT(lowVoltageDrive.elf elf32-littlearm)
 
-.debug_info     0x00000000     0xdfed
+.debug_info     0x00000000     0xe09a
  .debug_info    0x00000000      0x46a ..\obj\stm32f10x_rtc.o
  .debug_info    0x0000046a      0x12b ..\obj\semihosting.o
  .debug_info    0x00000595      0x131 ..\obj\startup_stm32f10x_ld.o
@@ -1426,21 +1428,21 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_info    0x00008010      0x361 ..\obj\stm32f10x_exti.o
  .debug_info    0x00008371      0xc0e ..\obj\stm32f10x_adc.o
  .debug_info    0x00008f7f      0x238 ..\obj\osc.o
- .debug_info    0x000091b7      0x44f ..\obj\motorBldc.o
- .debug_info    0x00009606      0xa6c ..\obj\stm32f10x_usart.o
- .debug_info    0x0000a072       0xcd ..\obj\sh_cmd.o
- .debug_info    0x0000a13f      0x440 ..\obj\syscalls.o
- .debug_info    0x0000a57f      0x819 ..\obj\stm32f10x_flash.o
- .debug_info    0x0000ad98      0x6ba ..\obj\adc.o
- .debug_info    0x0000b452      0x4a2 ..\obj\stm32f10x_dma.o
- .debug_info    0x0000b8f4      0x546 ..\obj\misc.o
- .debug_info    0x0000be3a      0x235 ..\obj\stm32f10x_wwdg.o
- .debug_info    0x0000c06f      0x971 ..\obj\stm32f10x_spi.o
- .debug_info    0x0000c9e0      0xb94 ..\obj\stm32f10x_i2c.o
- .debug_info    0x0000d574      0x879 ..\obj\stm32f10x_bkp.o
- .debug_info    0x0000dded      0x200 ..\obj\stm32f10x_iwdg.o
+ .debug_info    0x000091b7      0x4fc ..\obj\motorBldc.o
+ .debug_info    0x000096b3      0xa6c ..\obj\stm32f10x_usart.o
+ .debug_info    0x0000a11f       0xcd ..\obj\sh_cmd.o
+ .debug_info    0x0000a1ec      0x440 ..\obj\syscalls.o
+ .debug_info    0x0000a62c      0x819 ..\obj\stm32f10x_flash.o
+ .debug_info    0x0000ae45      0x6ba ..\obj\adc.o
+ .debug_info    0x0000b4ff      0x4a2 ..\obj\stm32f10x_dma.o
+ .debug_info    0x0000b9a1      0x546 ..\obj\misc.o
+ .debug_info    0x0000bee7      0x235 ..\obj\stm32f10x_wwdg.o
+ .debug_info    0x0000c11c      0x971 ..\obj\stm32f10x_spi.o
+ .debug_info    0x0000ca8d      0xb94 ..\obj\stm32f10x_i2c.o
+ .debug_info    0x0000d621      0x879 ..\obj\stm32f10x_bkp.o
+ .debug_info    0x0000de9a      0x200 ..\obj\stm32f10x_iwdg.o
 
-.debug_abbrev   0x00000000     0x2d05
+.debug_abbrev   0x00000000     0x2cea
  .debug_abbrev  0x00000000      0x166 ..\obj\stm32f10x_rtc.o
  .debug_abbrev  0x00000166       0x9a ..\obj\semihosting.o
  .debug_abbrev  0x00000200       0xa3 ..\obj\startup_stm32f10x_ld.o
@@ -1464,21 +1466,21 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_abbrev  0x00001979      0x14a ..\obj\stm32f10x_exti.o
  .debug_abbrev  0x00001ac3      0x174 ..\obj\stm32f10x_adc.o
  .debug_abbrev  0x00001c37      0x117 ..\obj\osc.o
- .debug_abbrev  0x00001d4e      0x17f ..\obj\motorBldc.o
- .debug_abbrev  0x00001ecd      0x15b ..\obj\stm32f10x_usart.o
- .debug_abbrev  0x00002028       0x14 ..\obj\sh_cmd.o
- .debug_abbrev  0x0000203c       0xde ..\obj\syscalls.o
- .debug_abbrev  0x0000211a      0x162 ..\obj\stm32f10x_flash.o
- .debug_abbrev  0x0000227c      0x204 ..\obj\adc.o
- .debug_abbrev  0x00002480      0x14e ..\obj\stm32f10x_dma.o
- .debug_abbrev  0x000025ce      0x135 ..\obj\misc.o
- .debug_abbrev  0x00002703       0xf8 ..\obj\stm32f10x_wwdg.o
- .debug_abbrev  0x000027fb      0x15d ..\obj\stm32f10x_spi.o
- .debug_abbrev  0x00002958      0x15d ..\obj\stm32f10x_i2c.o
- .debug_abbrev  0x00002ab5      0x156 ..\obj\stm32f10x_bkp.o
- .debug_abbrev  0x00002c0b       0xfa ..\obj\stm32f10x_iwdg.o
+ .debug_abbrev  0x00001d4e      0x164 ..\obj\motorBldc.o
+ .debug_abbrev  0x00001eb2      0x15b ..\obj\stm32f10x_usart.o
+ .debug_abbrev  0x0000200d       0x14 ..\obj\sh_cmd.o
+ .debug_abbrev  0x00002021       0xde ..\obj\syscalls.o
+ .debug_abbrev  0x000020ff      0x162 ..\obj\stm32f10x_flash.o
+ .debug_abbrev  0x00002261      0x204 ..\obj\adc.o
+ .debug_abbrev  0x00002465      0x14e ..\obj\stm32f10x_dma.o
+ .debug_abbrev  0x000025b3      0x135 ..\obj\misc.o
+ .debug_abbrev  0x000026e8       0xf8 ..\obj\stm32f10x_wwdg.o
+ .debug_abbrev  0x000027e0      0x15d ..\obj\stm32f10x_spi.o
+ .debug_abbrev  0x0000293d      0x15d ..\obj\stm32f10x_i2c.o
+ .debug_abbrev  0x00002a9a      0x156 ..\obj\stm32f10x_bkp.o
+ .debug_abbrev  0x00002bf0       0xfa ..\obj\stm32f10x_iwdg.o
 
-.debug_loc      0x00000000     0x6caa
+.debug_loc      0x00000000     0x6cb6
  .debug_loc     0x00000000      0x2e0 ..\obj\stm32f10x_rtc.o
  .debug_loc     0x000002e0       0xa8 ..\obj\semihosting.o
  .debug_loc     0x00000388       0x64 ..\obj\startup_stm32f10x_ld.o
@@ -1502,18 +1504,18 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_loc     0x00003b3e      0x1b4 ..\obj\stm32f10x_exti.o
  .debug_loc     0x00003cf2      0x7d4 ..\obj\stm32f10x_adc.o
  .debug_loc     0x000044c6       0xc8 ..\obj\osc.o
- .debug_loc     0x0000458e      0x1f4 ..\obj\motorBldc.o
- .debug_loc     0x00004782      0x658 ..\obj\stm32f10x_usart.o
- .debug_loc     0x00004dda      0x1ec ..\obj\syscalls.o
- .debug_loc     0x00004fc6      0x5d8 ..\obj\stm32f10x_flash.o
- .debug_loc     0x0000559e      0x220 ..\obj\adc.o
- .debug_loc     0x000057be      0x268 ..\obj\stm32f10x_dma.o
- .debug_loc     0x00005a26      0x118 ..\obj\misc.o
- .debug_loc     0x00005b3e      0x190 ..\obj\stm32f10x_wwdg.o
- .debug_loc     0x00005cce      0x508 ..\obj\stm32f10x_spi.o
- .debug_loc     0x000061d6      0x738 ..\obj\stm32f10x_i2c.o
- .debug_loc     0x0000690e      0x264 ..\obj\stm32f10x_bkp.o
- .debug_loc     0x00006b72      0x138 ..\obj\stm32f10x_iwdg.o
+ .debug_loc     0x0000458e      0x200 ..\obj\motorBldc.o
+ .debug_loc     0x0000478e      0x658 ..\obj\stm32f10x_usart.o
+ .debug_loc     0x00004de6      0x1ec ..\obj\syscalls.o
+ .debug_loc     0x00004fd2      0x5d8 ..\obj\stm32f10x_flash.o
+ .debug_loc     0x000055aa      0x220 ..\obj\adc.o
+ .debug_loc     0x000057ca      0x268 ..\obj\stm32f10x_dma.o
+ .debug_loc     0x00005a32      0x118 ..\obj\misc.o
+ .debug_loc     0x00005b4a      0x190 ..\obj\stm32f10x_wwdg.o
+ .debug_loc     0x00005cda      0x508 ..\obj\stm32f10x_spi.o
+ .debug_loc     0x000061e2      0x738 ..\obj\stm32f10x_i2c.o
+ .debug_loc     0x0000691a      0x264 ..\obj\stm32f10x_bkp.o
+ .debug_loc     0x00006b7e      0x138 ..\obj\stm32f10x_iwdg.o
 
 .debug_aranges  0x00000000     0x1378
  .debug_aranges
@@ -1626,7 +1628,7 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_ranges  0x00001088       0x68 ..\obj\stm32f10x_bkp.o
  .debug_ranges  0x000010f0       0x38 ..\obj\stm32f10x_iwdg.o
 
-.debug_line     0x00000000     0x6b66
+.debug_line     0x00000000     0x6b84
  .debug_line    0x00000000      0x2c7 ..\obj\stm32f10x_rtc.o
  .debug_line    0x000002c7       0xbf ..\obj\semihosting.o
  .debug_line    0x00000386       0xb8 ..\obj\startup_stm32f10x_ld.o
@@ -1650,21 +1652,21 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_line    0x00003b25      0x2ad ..\obj\stm32f10x_exti.o
  .debug_line    0x00003dd2      0x52c ..\obj\stm32f10x_adc.o
  .debug_line    0x000042fe      0x207 ..\obj\osc.o
- .debug_line    0x00004505      0x29a ..\obj\motorBldc.o
- .debug_line    0x0000479f      0x4a4 ..\obj\stm32f10x_usart.o
- .debug_line    0x00004c43       0x92 ..\obj\sh_cmd.o
- .debug_line    0x00004cd5      0x1a8 ..\obj\syscalls.o
- .debug_line    0x00004e7d      0x4e2 ..\obj\stm32f10x_flash.o
- .debug_line    0x0000535f      0x2e8 ..\obj\adc.o
- .debug_line    0x00005647      0x30c ..\obj\stm32f10x_dma.o
- .debug_line    0x00005953      0x24d ..\obj\misc.o
- .debug_line    0x00005ba0      0x231 ..\obj\stm32f10x_wwdg.o
- .debug_line    0x00005dd1      0x42b ..\obj\stm32f10x_spi.o
- .debug_line    0x000061fc      0x4e0 ..\obj\stm32f10x_i2c.o
- .debug_line    0x000066dc      0x280 ..\obj\stm32f10x_bkp.o
- .debug_line    0x0000695c      0x20a ..\obj\stm32f10x_iwdg.o
+ .debug_line    0x00004505      0x2b8 ..\obj\motorBldc.o
+ .debug_line    0x000047bd      0x4a4 ..\obj\stm32f10x_usart.o
+ .debug_line    0x00004c61       0x92 ..\obj\sh_cmd.o
+ .debug_line    0x00004cf3      0x1a8 ..\obj\syscalls.o
+ .debug_line    0x00004e9b      0x4e2 ..\obj\stm32f10x_flash.o
+ .debug_line    0x0000537d      0x2e8 ..\obj\adc.o
+ .debug_line    0x00005665      0x30c ..\obj\stm32f10x_dma.o
+ .debug_line    0x00005971      0x24d ..\obj\misc.o
+ .debug_line    0x00005bbe      0x231 ..\obj\stm32f10x_wwdg.o
+ .debug_line    0x00005def      0x42b ..\obj\stm32f10x_spi.o
+ .debug_line    0x0000621a      0x4e0 ..\obj\stm32f10x_i2c.o
+ .debug_line    0x000066fa      0x280 ..\obj\stm32f10x_bkp.o
+ .debug_line    0x0000697a      0x20a ..\obj\stm32f10x_iwdg.o
 
-.debug_str      0x00000000     0x56f7
+.debug_str      0x00000000     0x5749
  .debug_str     0x00000000      0x2fa ..\obj\stm32f10x_rtc.o
                                 0x352 (size before relaxing)
  .debug_str     0x000002fa       0x8f ..\obj\semihosting.o
@@ -1711,29 +1713,29 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
                                 0x6ab (size before relaxing)
  .debug_str     0x000038d7       0xab ..\obj\osc.o
                                 0x1d9 (size before relaxing)
- .debug_str     0x00003982      0x20c ..\obj\motorBldc.o
-                                0x38a (size before relaxing)
- .debug_str     0x00003b8e      0x43e ..\obj\stm32f10x_usart.o
+ .debug_str     0x00003982      0x2a1 ..\obj\motorBldc.o
+                                0x428 (size before relaxing)
+ .debug_str     0x00003c23      0x43e ..\obj\stm32f10x_usart.o
                                 0x640 (size before relaxing)
- .debug_str     0x00003fcc      0x15d ..\obj\syscalls.o
+ .debug_str     0x00004061      0x15d ..\obj\syscalls.o
                                 0x2c4 (size before relaxing)
- .debug_str     0x00004129      0x41d ..\obj\stm32f10x_flash.o
+ .debug_str     0x000041be      0x41d ..\obj\stm32f10x_flash.o
                                 0x598 (size before relaxing)
- .debug_str     0x00004546      0x1d1 ..\obj\adc.o
+ .debug_str     0x000045db      0x18e ..\obj\adc.o
                                 0x62f (size before relaxing)
- .debug_str     0x00004717      0x232 ..\obj\stm32f10x_dma.o
+ .debug_str     0x00004769      0x232 ..\obj\stm32f10x_dma.o
                                 0x371 (size before relaxing)
- .debug_str     0x00004949      0x137 ..\obj\misc.o
+ .debug_str     0x0000499b      0x137 ..\obj\misc.o
                                 0x373 (size before relaxing)
- .debug_str     0x00004a80       0xf2 ..\obj\stm32f10x_wwdg.o
+ .debug_str     0x00004ad2       0xf2 ..\obj\stm32f10x_wwdg.o
                                 0x218 (size before relaxing)
- .debug_str     0x00004b72      0x37f ..\obj\stm32f10x_spi.o
+ .debug_str     0x00004bc4      0x37f ..\obj\stm32f10x_spi.o
                                 0x5ad (size before relaxing)
- .debug_str     0x00004ef1      0x3d0 ..\obj\stm32f10x_i2c.o
+ .debug_str     0x00004f43      0x3d0 ..\obj\stm32f10x_i2c.o
                                 0x616 (size before relaxing)
- .debug_str     0x000052c1      0x340 ..\obj\stm32f10x_bkp.o
+ .debug_str     0x00005313      0x340 ..\obj\stm32f10x_bkp.o
                                 0x565 (size before relaxing)
- .debug_str     0x00005601       0xf6 ..\obj\stm32f10x_iwdg.o
+ .debug_str     0x00005653       0xf6 ..\obj\stm32f10x_iwdg.o
                                 0x20c (size before relaxing)
 
 .comment        0x00000000       0x70
@@ -1859,7 +1861,7 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .ARM.attributes
                 0x0000078e       0x2d c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)
 
-.debug_frame    0x00000000     0x3b1c
+.debug_frame    0x00000000     0x3b24
  .debug_frame   0x00000000      0x194 ..\obj\stm32f10x_rtc.o
  .debug_frame   0x00000194       0x70 ..\obj\semihosting.o
  .debug_frame   0x00000204       0x48 ..\obj\startup_stm32f10x_ld.o
@@ -1883,16 +1885,16 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_frame   0x00002088       0xec ..\obj\stm32f10x_exti.o
  .debug_frame   0x00002174      0x400 ..\obj\stm32f10x_adc.o
  .debug_frame   0x00002574       0x84 ..\obj\osc.o
- .debug_frame   0x000025f8      0x12c ..\obj\motorBldc.o
- .debug_frame   0x00002724      0x344 ..\obj\stm32f10x_usart.o
- .debug_frame   0x00002a68      0x108 ..\obj\syscalls.o
- .debug_frame   0x00002b70      0x338 ..\obj\stm32f10x_flash.o
- .debug_frame   0x00002ea8      0x134 ..\obj\adc.o
- .debug_frame   0x00002fdc      0x144 ..\obj\stm32f10x_dma.o
- .debug_frame   0x00003120       0x9c ..\obj\misc.o
- .debug_frame   0x000031bc       0xe4 ..\obj\stm32f10x_wwdg.o
- .debug_frame   0x000032a0      0x29c ..\obj\stm32f10x_spi.o
- .debug_frame   0x0000353c      0x3b4 ..\obj\stm32f10x_i2c.o
- .debug_frame   0x000038f0      0x150 ..\obj\stm32f10x_bkp.o
- .debug_frame   0x00003a40       0xb0 ..\obj\stm32f10x_iwdg.o
- .debug_frame   0x00003af0       0x2c c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)
+ .debug_frame   0x000025f8      0x134 ..\obj\motorBldc.o
+ .debug_frame   0x0000272c      0x344 ..\obj\stm32f10x_usart.o
+ .debug_frame   0x00002a70      0x108 ..\obj\syscalls.o
+ .debug_frame   0x00002b78      0x338 ..\obj\stm32f10x_flash.o
+ .debug_frame   0x00002eb0      0x134 ..\obj\adc.o
+ .debug_frame   0x00002fe4      0x144 ..\obj\stm32f10x_dma.o
+ .debug_frame   0x00003128       0x9c ..\obj\misc.o
+ .debug_frame   0x000031c4       0xe4 ..\obj\stm32f10x_wwdg.o
+ .debug_frame   0x000032a8      0x29c ..\obj\stm32f10x_spi.o
+ .debug_frame   0x00003544      0x3b4 ..\obj\stm32f10x_i2c.o
+ .debug_frame   0x000038f8      0x150 ..\obj\stm32f10x_bkp.o
+ .debug_frame   0x00003a48       0xb0 ..\obj\stm32f10x_iwdg.o
+ .debug_frame   0x00003af8       0x2c c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)

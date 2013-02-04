@@ -97,9 +97,9 @@
     <File name="cmsis_boot" path="" type="2"/>
     <File name="milliSecTimer.c" path="milliSecTimer.c" type="1"/>
     <File name="motor.h" path="motor.h" type="1"/>
-    <File name="semihosting/sh_cmd.s" path="semihosting/sh_cmd.s" type="1"/>
     <File name="stm_lib/inc/stm32f10x_pwr.h" path="stm_lib/inc/stm32f10x_pwr.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_tim.c" path="stm_lib/src/stm32f10x_tim.c" type="1"/>
+    <File name="semihosting/sh_cmd.s" path="semihosting/sh_cmd.s" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
     <File name="gpio.c" path="gpio.c" type="1"/>
     <File name="semihosting/semihosting.c" path="semihosting/semihosting.c" type="1"/>
@@ -109,9 +109,9 @@
     <File name="stm_lib/src/stm32f10x_iwdg.c" path="stm_lib/src/stm32f10x_iwdg.c" type="1"/>
     <File name="cmsis_boot/stm32f10x.h" path="cmsis_boot/stm32f10x.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_dbgmcu.h" path="stm_lib/inc/stm32f10x_dbgmcu.h" type="1"/>
-    <File name="rcPwm.h" path="rcPwm.h" type="1"/>
     <File name="osc.c" path="osc.c" type="1"/>
     <File name="cmsis_boot/stm32f10x_conf.h" path="cmsis_boot/stm32f10x_conf.h" type="1"/>
+    <File name="rcPwm.h" path="rcPwm.h" type="1"/>
     <File name="motorDc.c" path="motorDc.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_flash.h" path="stm_lib/inc/stm32f10x_flash.h" type="1"/>
     <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>

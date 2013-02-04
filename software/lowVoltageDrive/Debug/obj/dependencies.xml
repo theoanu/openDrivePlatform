@@ -115,6 +115,10 @@
          <include file="..\..\..\gpio.h"/>
          <include file="..\..\..\adc.h"/>
       </source>
+      <source file="..\..\..\adc.c" lastModified="13c8953d2f8">
+         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
+         <include file="..\..\..\adc.h"/>
+      </source>
       <source file="..\..\..\semihosting\sh_cmd.s" lastModified="13c219ef781">
       </source>
       <source file="..\..\..\stm_lib\inc\stm32f10x_crc.h" lastModified="13c219f19a9">
@@ -238,13 +242,13 @@
          <include file="..\..\..\mpwm.h"/>
          <include file="..\..\..\gpio.h"/>
       </source>
-      <source file="..\..\..\motorBldc.c" lastModified="13c8945f838">
-         <include file="..\..\..\stm_lib\inc\stm32f10x_adc.h"/>
+      <source file="..\..\..\motorBldc.c" lastModified="13ca2117e14">
          <include file="..\..\..\stm_lib\inc\misc.h"/>
          <include file="..\..\..\motorBldc.h"/>
          <include file="..\..\..\mpwm.h"/>
          <include file="..\..\..\gpio.h"/>
          <include file="..\..\..\adc.h"/>
+         <include file="..\..\..\milliSecTimer.h"/>
       </source>
       <source file="..\..\..\stm_lib\src\stm32f10x_crc.c" lastModified="13c219f19c7">
          <include file="..\..\..\stm_lib\inc\stm32f10x_crc.h"/>

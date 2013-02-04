@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Wl -nostartfiles -g -Map=lowVoltageDrive.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\lowVoltageDrive -TC:\CooCox\CoIDE\configuration\ProgramData\lowVoltageDrive/arm-gcc-link.ld -g">
-      <target file="lowVoltageDrive.elf" lastModified="13c895407f7">
+      <target file="lowVoltageDrive.elf" lastModified="13ca21198d4">
          <source file="..\obj\stm32f10x_rtc.o" lastModified="13c891b2d1a"/>
          <source file="..\obj\semihosting.o" lastModified="13c891b2db2"/>
          <source file="..\obj\startup_stm32f10x_ld.o" lastModified="13c891b2e18"/>
@@ -25,7 +25,7 @@
          <source file="..\obj\stm32f10x_exti.o" lastModified="13c891b3bd5"/>
          <source file="..\obj\stm32f10x_adc.o" lastModified="13c891b3ce3"/>
          <source file="..\obj\osc.o" lastModified="13c891b3d9c"/>
-         <source file="..\obj\motorBldc.o" lastModified="13c89475489"/>
+         <source file="..\obj\motorBldc.o" lastModified="13ca2119633"/>
          <source file="..\obj\stm32f10x_usart.o" lastModified="13c891b3f68"/>
          <source file="..\obj\sh_cmd.o" lastModified="13c891b3f83"/>
          <source file="..\obj\syscalls.o" lastModified="13c891b3ff4"/>
