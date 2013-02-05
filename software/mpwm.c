@@ -77,7 +77,7 @@ MPWM_initMotorPwm(void)
 	MPWM_setDeadTime(1.0);
 
 	// Set ADC sampling time
-	MPWM_setAdcSamplingTime(64000);
+	MPWM_setAdcSamplingTime(35000);
 
 	// Master Output Enable on
 	TIM1->BDTR |= (uint16_t)(1 << 15);

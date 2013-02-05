@@ -300,8 +300,6 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\motorDc.o
  .data          0x00000000        0x0 ..\obj\motorDc.o
  .bss           0x00000000        0x0 ..\obj\motorDc.o
- .text.MDC_startMotor
-                0x00000000       0x28 ..\obj\motorDc.o
  .text.MDC_getMotorState
                 0x00000000       0x18 ..\obj\motorDc.o
  .text          0x00000000        0x0 ..\obj\stm32f10x_dbgmcu.o
@@ -560,10 +558,6 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\motor.o
  .data          0x00000000        0x0 ..\obj\motor.o
  .bss           0x00000000        0x0 ..\obj\motor.o
- .text.MOT_startMotor
-                0x00000000       0x2c ..\obj\motor.o
- .text.MOT_stopMotor
-                0x00000000       0x2c ..\obj\motor.o
  .text          0x00000000        0x0 ..\obj\stm32f10x_exti.o
  .data          0x00000000        0x0 ..\obj\stm32f10x_exti.o
  .bss           0x00000000        0x0 ..\obj\stm32f10x_exti.o
@@ -664,10 +658,6 @@ Discarded input sections
                 0x00000000      0x12c ..\obj\osc.o
  .text          0x00000000        0x0 ..\obj\motorBldc.o
  .data          0x00000000        0x0 ..\obj\motorBldc.o
- .text.BLDC_startMotor
-                0x00000000       0x60 ..\obj\motorBldc.o
- .text.BLDC_determineSector
-                0x00000000       0x94 ..\obj\motorBldc.o
  .text.BLDC_getMotorState
                 0x00000000       0x18 ..\obj\motorBldc.o
  .text          0x00000000        0x0 ..\obj\stm32f10x_usart.o
@@ -1042,7 +1032,7 @@ Linker script and memory map
 
                 0x20002800                _eram = 0x20002800
 
-.text           0x08000000     0x278c
+.text           0x08000000     0x291c
  *(.isr_vector .isr_vector.*)
  .isr_vector    0x08000000      0x10c ..\obj\startup_stm32f10x_ld.o
                 0x08000000                g_pfnVectors
@@ -1098,226 +1088,241 @@ Linker script and memory map
  .text.MDC_initMotor
                 0x08000180       0x20 ..\obj\motorDc.o
                 0x08000180                MDC_initMotor
+ .text.MDC_startMotor
+                0x080001a0       0x28 ..\obj\motorDc.o
+                0x080001a0                MDC_startMotor
  .text.MDC_stopMotor
-                0x080001a0       0x44 ..\obj\motorDc.o
-                0x080001a0                MDC_stopMotor
+                0x080001c8       0x44 ..\obj\motorDc.o
+                0x080001c8                MDC_stopMotor
  .text.MDC_commandDutyCycle
-                0x080001e4       0xb4 ..\obj\motorDc.o
-                0x080001e4                MDC_commandDutyCycle
+                0x0800020c       0xb4 ..\obj\motorDc.o
+                0x0800020c                MDC_commandDutyCycle
  .text.MDC_commandDirection
-                0x08000298       0x20 ..\obj\motorDc.o
-                0x08000298                MDC_commandDirection
+                0x080002c0       0x20 ..\obj\motorDc.o
+                0x080002c0                MDC_commandDirection
  .text.SystemInit
-                0x080002b8       0xac ..\obj\system_stm32f10x.o
-                0x080002b8                SystemInit
+                0x080002e0       0xac ..\obj\system_stm32f10x.o
+                0x080002e0                SystemInit
  .text.SetSysClock
-                0x08000364        0xc ..\obj\system_stm32f10x.o
+                0x0800038c        0xc ..\obj\system_stm32f10x.o
  .text.SetSysClockTo72
-                0x08000370      0x1ac ..\obj\system_stm32f10x.o
+                0x08000398      0x1ac ..\obj\system_stm32f10x.o
  .text.NVIC_EnableIRQ
-                0x0800051c       0x38 ..\obj\milliSecTimer.o
+                0x08000544       0x38 ..\obj\milliSecTimer.o
  .text.MSTMR_initMilliSecTimer
-                0x08000554       0x94 ..\obj\milliSecTimer.o
-                0x08000554                MSTMR_initMilliSecTimer
+                0x0800057c       0x94 ..\obj\milliSecTimer.o
+                0x0800057c                MSTMR_initMilliSecTimer
  .text.TIM2_IRQHandler
-                0x080005e8       0x2c ..\obj\milliSecTimer.o
-                0x080005e8                TIM2_IRQHandler
+                0x08000610       0x2c ..\obj\milliSecTimer.o
+                0x08000610                TIM2_IRQHandler
  .text.MSTMR_getMilliSeconds
-                0x08000614       0x18 ..\obj\milliSecTimer.o
-                0x08000614                MSTMR_getMilliSeconds
- .text.main     0x0800062c       0x80 ..\obj\main.o
-                0x0800062c                main
- .text.initDio  0x080006ac       0xb8 ..\obj\main.o
-                0x080006ac                initDio
+                0x0800063c       0x18 ..\obj\milliSecTimer.o
+                0x0800063c                MSTMR_getMilliSeconds
+ .text.main     0x08000654       0x80 ..\obj\main.o
+                0x08000654                main
+ .text.initDio  0x080006d4       0xb8 ..\obj\main.o
+                0x080006d4                initDio
  .text.NVIC_EnableIRQ
-                0x08000764       0x38 ..\obj\mpwm.o
+                0x0800078c       0x38 ..\obj\mpwm.o
  .text.MPWM_initMotorPwm
-                0x0800079c      0x184 ..\obj\mpwm.o
-                0x0800079c                MPWM_initMotorPwm
+                0x080007c4      0x184 ..\obj\mpwm.o
+                0x080007c4                MPWM_initMotorPwm
  .text.MPWM_setMotorPwmFreq
-                0x08000920       0x40 ..\obj\mpwm.o
-                0x08000920                MPWM_setMotorPwmFreq
+                0x08000948       0x40 ..\obj\mpwm.o
+                0x08000948                MPWM_setMotorPwmFreq
  .text.MPWM_setDeadTime
-                0x08000960       0xac ..\obj\mpwm.o
-                0x08000960                MPWM_setDeadTime
+                0x08000988       0xac ..\obj\mpwm.o
+                0x08000988                MPWM_setDeadTime
  .text.MPWM_setAdcSamplingTime
-                0x08000a0c       0x3c ..\obj\mpwm.o
-                0x08000a0c                MPWM_setAdcSamplingTime
+                0x08000a34       0x3c ..\obj\mpwm.o
+                0x08000a34                MPWM_setAdcSamplingTime
  .text.MPWM_setPhaseDutyCycle
-                0x08000a48      0x3f0 ..\obj\mpwm.o
-                0x08000a48                MPWM_setPhaseDutyCycle
+                0x08000a70      0x3f0 ..\obj\mpwm.o
+                0x08000a70                MPWM_setPhaseDutyCycle
  .text.TIM1_CC_IRQHandler
-                0x08000e38       0x24 ..\obj\mpwm.o
-                0x08000e38                TIM1_CC_IRQHandler
+                0x08000e60       0x24 ..\obj\mpwm.o
+                0x08000e60                TIM1_CC_IRQHandler
  .text.NVIC_EnableIRQ
-                0x08000e5c       0x38 ..\obj\rcPwm.o
+                0x08000e84       0x38 ..\obj\rcPwm.o
  .text.RCPWM_initRcPwm
-                0x08000e94      0x110 ..\obj\rcPwm.o
-                0x08000e94                RCPWM_initRcPwm
+                0x08000ebc      0x110 ..\obj\rcPwm.o
+                0x08000ebc                RCPWM_initRcPwm
  .text.RCPWM_getSpeedDemand
-                0x08000fa4       0x38 ..\obj\rcPwm.o
-                0x08000fa4                RCPWM_getSpeedDemand
+                0x08000fcc       0x38 ..\obj\rcPwm.o
+                0x08000fcc                RCPWM_getSpeedDemand
  .text.TIM3_IRQHandler
-                0x08000fdc       0xb8 ..\obj\rcPwm.o
-                0x08000fdc                TIM3_IRQHandler
+                0x08001004       0xb8 ..\obj\rcPwm.o
+                0x08001004                TIM3_IRQHandler
  .text.RCC_DeInit
-                0x08001094       0x9c ..\obj\stm32f10x_rcc.o
-                0x08001094                RCC_DeInit
+                0x080010bc       0x9c ..\obj\stm32f10x_rcc.o
+                0x080010bc                RCC_DeInit
  .text.RCC_APB1PeriphClockCmd
-                0x08001130       0x58 ..\obj\stm32f10x_rcc.o
-                0x08001130                RCC_APB1PeriphClockCmd
+                0x08001158       0x58 ..\obj\stm32f10x_rcc.o
+                0x08001158                RCC_APB1PeriphClockCmd
  .text.GPIO_pinSetup
-                0x08001188      0x1a4 ..\obj\gpio.o
-                0x08001188                GPIO_pinSetup
+                0x080011b0      0x1a4 ..\obj\gpio.o
+                0x080011b0                GPIO_pinSetup
  .text.GPIO_clearOutputPin
-                0x0800132c       0x78 ..\obj\gpio.o
-                0x0800132c                GPIO_clearOutputPin
+                0x08001354       0x78 ..\obj\gpio.o
+                0x08001354                GPIO_clearOutputPin
  .text.GPIO_readInput
-                0x080013a4       0x84 ..\obj\gpio.o
-                0x080013a4                GPIO_readInput
+                0x080013cc       0x84 ..\obj\gpio.o
+                0x080013cc                GPIO_readInput
  .text.MOT_defineMotorType
-                0x08001428       0x2c ..\obj\motor.o
-                0x08001428                MOT_defineMotorType
+                0x08001450       0x2c ..\obj\motor.o
+                0x08001450                MOT_defineMotorType
  .text.MOT_initMotor
-                0x08001454       0x2c ..\obj\motor.o
-                0x08001454                MOT_initMotor
+                0x0800147c       0x2c ..\obj\motor.o
+                0x0800147c                MOT_initMotor
+ .text.MOT_startMotor
+                0x080014a8       0x2c ..\obj\motor.o
+                0x080014a8                MOT_startMotor
+ .text.MOT_stopMotor
+                0x080014d4       0x2c ..\obj\motor.o
+                0x080014d4                MOT_stopMotor
  .text.MOT_commandDutyCycle
-                0x08001480       0x50 ..\obj\motor.o
-                0x08001480                MOT_commandDutyCycle
+                0x08001500       0x5c ..\obj\motor.o
+                0x08001500                MOT_commandDutyCycle
  .text.MOT_commandDirection
-                0x080014d0       0x58 ..\obj\motor.o
-                0x080014d0                MOT_commandDirection
+                0x0800155c       0x58 ..\obj\motor.o
+                0x0800155c                MOT_commandDirection
  .text.OSC_initClock
-                0x08001528        0xc ..\obj\osc.o
-                0x08001528                OSC_initClock
+                0x080015b4        0xc ..\obj\osc.o
+                0x080015b4                OSC_initClock
  .text.OSC_initHseClock
-                0x08001534      0x184 ..\obj\osc.o
-                0x08001534                OSC_initHseClock
+                0x080015c0      0x184 ..\obj\osc.o
+                0x080015c0                OSC_initHseClock
  .text.OSC_getClockFreq
-                0x080016b8       0x18 ..\obj\osc.o
-                0x080016b8                OSC_getClockFreq
+                0x08001744       0x18 ..\obj\osc.o
+                0x08001744                OSC_getClockFreq
  .text.BLDC_initMotor
-                0x080016d0       0x30 ..\obj\motorBldc.o
-                0x080016d0                BLDC_initMotor
+                0x0800175c       0x30 ..\obj\motorBldc.o
+                0x0800175c                BLDC_initMotor
  .text.BLDC_initPositionSensors
-                0x08001700       0xe8 ..\obj\motorBldc.o
-                0x08001700                BLDC_initPositionSensors
+                0x0800178c       0xe8 ..\obj\motorBldc.o
+                0x0800178c                BLDC_initPositionSensors
+ .text.BLDC_startMotor
+                0x08001874       0x70 ..\obj\motorBldc.o
+                0x08001874                BLDC_startMotor
  .text.BLDC_stopMotor
-                0x080017e8       0x44 ..\obj\motorBldc.o
-                0x080017e8                BLDC_stopMotor
+                0x080018e4       0x44 ..\obj\motorBldc.o
+                0x080018e4                BLDC_stopMotor
+ .text.BLDC_determineSector
+                0x08001928       0x94 ..\obj\motorBldc.o
+                0x08001928                BLDC_determineSector
  .text.BLDC_commandDutyCycle
-                0x0800182c       0x20 ..\obj\motorBldc.o
-                0x0800182c                BLDC_commandDutyCycle
+                0x080019bc       0x20 ..\obj\motorBldc.o
+                0x080019bc                BLDC_commandDutyCycle
  .text.BLDC_commandDirection
-                0x0800184c       0x20 ..\obj\motorBldc.o
-                0x0800184c                BLDC_commandDirection
+                0x080019dc       0x20 ..\obj\motorBldc.o
+                0x080019dc                BLDC_commandDirection
  .text.BLDC_commutate
-                0x0800186c      0x210 ..\obj\motorBldc.o
-                0x0800186c                BLDC_commutate
+                0x080019fc      0x20c ..\obj\motorBldc.o
+                0x080019fc                BLDC_commutate
  .text.BLDC_adcInterrupt
-                0x08001a7c      0x11c ..\obj\motorBldc.o
-                0x08001a7c                BLDC_adcInterrupt
- .text          0x08001b98       0x28 ..\obj\sh_cmd.o
-                0x08001b98                SH_DoCommand
-                0x08001baa                HardFault_Handler
+                0x08001c08      0x120 ..\obj\motorBldc.o
+                0x08001c08                BLDC_adcInterrupt
+ .text          0x08001d28       0x28 ..\obj\sh_cmd.o
+                0x08001d28                SH_DoCommand
+                0x08001d3a                HardFault_Handler
  .text.FLASH_SetLatency
-                0x08001bc0       0x40 ..\obj\stm32f10x_flash.o
-                0x08001bc0                FLASH_SetLatency
+                0x08001d50       0x40 ..\obj\stm32f10x_flash.o
+                0x08001d50                FLASH_SetLatency
  .text.FLASH_PrefetchBufferCmd
-                0x08001c00       0x44 ..\obj\stm32f10x_flash.o
-                0x08001c00                FLASH_PrefetchBufferCmd
+                0x08001d90       0x44 ..\obj\stm32f10x_flash.o
+                0x08001d90                FLASH_PrefetchBufferCmd
  .text.NVIC_EnableIRQ
-                0x08001c44       0x38 ..\obj\adc.o
+                0x08001dd4       0x38 ..\obj\adc.o
  .text.ADC_initAdc
-                0x08001c7c       0x18 ..\obj\adc.o
-                0x08001c7c                ADC_initAdc
+                0x08001e0c       0x18 ..\obj\adc.o
+                0x08001e0c                ADC_initAdc
  .text.ADC_initAdc1
-                0x08001c94       0xa0 ..\obj\adc.o
-                0x08001c94                ADC_initAdc1
+                0x08001e24       0xa0 ..\obj\adc.o
+                0x08001e24                ADC_initAdc1
  .text.ADC_initAdc2
-                0x08001d34       0xa0 ..\obj\adc.o
-                0x08001d34                ADC_initAdc2
+                0x08001ec4       0xa0 ..\obj\adc.o
+                0x08001ec4                ADC_initAdc2
  .text.ADC_startAdcConversion
-                0x08001dd4       0x3c ..\obj\adc.o
-                0x08001dd4                ADC_startAdcConversion
+                0x08001f64       0x3c ..\obj\adc.o
+                0x08001f64                ADC_startAdcConversion
  .text.ADC_getVoltage
-                0x08001e10       0x98 ..\obj\adc.o
-                0x08001e10                ADC_getVoltage
+                0x08001fa0       0x98 ..\obj\adc.o
+                0x08001fa0                ADC_getVoltage
  .text.ADC_initAdc1Interrupt
-                0x08001ea8       0x38 ..\obj\adc.o
-                0x08001ea8                ADC_initAdc1Interrupt
+                0x08002038       0x38 ..\obj\adc.o
+                0x08002038                ADC_initAdc1Interrupt
  .text.ADC1_2_IRQHandler
-                0x08001ee0       0xe0 ..\obj\adc.o
-                0x08001ee0                ADC1_2_IRQHandler
+                0x08002070       0xe0 ..\obj\adc.o
+                0x08002070                ADC1_2_IRQHandler
  .text.NVIC_Init
-                0x08001fc0       0xe8 ..\obj\misc.o
-                0x08001fc0                NVIC_Init
- .text          0x080020a8      0x21c c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_addsubsf3.o)
-                0x080020a8                __aeabi_frsub
-                0x080020b0                __subsf3
-                0x080020b0                __aeabi_fsub
-                0x080020b4                __aeabi_fadd
-                0x080020b4                __addsf3
-                0x08002214                __aeabi_ui2f
-                0x08002214                __floatunsisf
-                0x0800221c                __aeabi_i2f
-                0x0800221c                __floatsisf
-                0x08002238                __aeabi_ul2f
-                0x08002238                __floatundisf
-                0x08002248                __aeabi_l2f
-                0x08002248                __floatdisf
- .text          0x080022c4      0x2a0 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_muldivsf3.o)
-                0x080022c4                __mulsf3
-                0x080022c4                __aeabi_fmul
-                0x0800242c                __aeabi_fdiv
-                0x0800242c                __divsf3
- .text          0x08002564       0xec c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_cmpsf2.o)
-                0x08002564                __gesf2
-                0x08002564                __gtsf2
-                0x0800256c                __lesf2
-                0x0800256c                __ltsf2
-                0x08002574                __nesf2
-                0x08002574                __eqsf2
-                0x08002574                __cmpsf2
-                0x080025d4                __aeabi_cfrcmple
-                0x080025dc                __aeabi_cfcmpeq
-                0x080025dc                __aeabi_cfcmple
-                0x080025ec                __aeabi_fcmpeq
-                0x08002600                __aeabi_fcmplt
-                0x08002614                __aeabi_fcmple
-                0x08002628                __aeabi_fcmpge
-                0x0800263c                __aeabi_fcmpgt
- .text          0x08002650       0x40 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_fixunssfsi.o)
-                0x08002650                __fixunssfsi
-                0x08002650                __aeabi_f2uiz
- .text          0x08002690       0x84 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)
-                0x08002690                memcpy
+                0x08002150       0xe8 ..\obj\misc.o
+                0x08002150                NVIC_Init
+ .text          0x08002238      0x21c c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x08002238                __aeabi_frsub
+                0x08002240                __subsf3
+                0x08002240                __aeabi_fsub
+                0x08002244                __aeabi_fadd
+                0x08002244                __addsf3
+                0x080023a4                __aeabi_ui2f
+                0x080023a4                __floatunsisf
+                0x080023ac                __aeabi_i2f
+                0x080023ac                __floatsisf
+                0x080023c8                __aeabi_ul2f
+                0x080023c8                __floatundisf
+                0x080023d8                __aeabi_l2f
+                0x080023d8                __floatdisf
+ .text          0x08002454      0x2a0 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x08002454                __mulsf3
+                0x08002454                __aeabi_fmul
+                0x080025bc                __aeabi_fdiv
+                0x080025bc                __divsf3
+ .text          0x080026f4       0xec c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_cmpsf2.o)
+                0x080026f4                __gesf2
+                0x080026f4                __gtsf2
+                0x080026fc                __lesf2
+                0x080026fc                __ltsf2
+                0x08002704                __nesf2
+                0x08002704                __eqsf2
+                0x08002704                __cmpsf2
+                0x08002764                __aeabi_cfrcmple
+                0x0800276c                __aeabi_cfcmpeq
+                0x0800276c                __aeabi_cfcmple
+                0x0800277c                __aeabi_fcmpeq
+                0x08002790                __aeabi_fcmplt
+                0x080027a4                __aeabi_fcmple
+                0x080027b8                __aeabi_fcmpge
+                0x080027cc                __aeabi_fcmpgt
+ .text          0x080027e0       0x40 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+                0x080027e0                __fixunssfsi
+                0x080027e0                __aeabi_f2uiz
+ .text          0x08002820       0x84 c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)
+                0x08002820                memcpy
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x08002714       0x78 ..\obj\motorBldc.o
-                0x08002714                hallToSector
+ .rodata        0x080028a4       0x78 ..\obj\motorBldc.o
+                0x080028a4                hallToSector
 
-.vfp11_veneer   0x0800278c        0x0
+.vfp11_veneer   0x0800291c        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0800278c        0x0
+.v4_bx          0x0800291c        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800278c                __exidx_start = .
+                0x0800291c                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0800278c                __exidx_end = .
-                0x0800278c                . = ALIGN (0x4)
-                0x0800278c                _etext = .
-                0x0800278c                _sidata = .
+                0x0800291c                __exidx_end = .
+                0x0800291c                . = ALIGN (0x4)
+                0x0800291c                _etext = .
+                0x0800291c                _sidata = .
 
-.data           0x20000000        0x0 load address 0x0800278c
+.data           0x20000000        0x0 load address 0x0800291c
                 0x20000000                _sdata = .
  *(.data .data.*)
                 0x20000000                . = ALIGN (0x4)
@@ -1405,7 +1410,7 @@ LOAD c:/program files (x86)/arm-none-eabi-gcc-4_6/bin/../lib/gcc/arm-none-eabi/4
 END GROUP
 OUTPUT(lowVoltageDrive.elf elf32-littlearm)
 
-.debug_info     0x00000000     0xe0a8
+.debug_info     0x00000000     0xe0e5
  .debug_info    0x00000000      0x46a ..\obj\stm32f10x_rtc.o
  .debug_info    0x0000046a      0x12b ..\obj\semihosting.o
  .debug_info    0x00000595      0x131 ..\obj\startup_stm32f10x_ld.o
@@ -1429,19 +1434,19 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_info    0x00008010      0x361 ..\obj\stm32f10x_exti.o
  .debug_info    0x00008371      0xc0e ..\obj\stm32f10x_adc.o
  .debug_info    0x00008f7f      0x238 ..\obj\osc.o
- .debug_info    0x000091b7      0x50a ..\obj\motorBldc.o
- .debug_info    0x000096c1      0xa6c ..\obj\stm32f10x_usart.o
- .debug_info    0x0000a12d       0xcd ..\obj\sh_cmd.o
- .debug_info    0x0000a1fa      0x440 ..\obj\syscalls.o
- .debug_info    0x0000a63a      0x819 ..\obj\stm32f10x_flash.o
- .debug_info    0x0000ae53      0x6ba ..\obj\adc.o
- .debug_info    0x0000b50d      0x4a2 ..\obj\stm32f10x_dma.o
- .debug_info    0x0000b9af      0x546 ..\obj\misc.o
- .debug_info    0x0000bef5      0x235 ..\obj\stm32f10x_wwdg.o
- .debug_info    0x0000c12a      0x971 ..\obj\stm32f10x_spi.o
- .debug_info    0x0000ca9b      0xb94 ..\obj\stm32f10x_i2c.o
- .debug_info    0x0000d62f      0x879 ..\obj\stm32f10x_bkp.o
- .debug_info    0x0000dea8      0x200 ..\obj\stm32f10x_iwdg.o
+ .debug_info    0x000091b7      0x547 ..\obj\motorBldc.o
+ .debug_info    0x000096fe      0xa6c ..\obj\stm32f10x_usart.o
+ .debug_info    0x0000a16a       0xcd ..\obj\sh_cmd.o
+ .debug_info    0x0000a237      0x440 ..\obj\syscalls.o
+ .debug_info    0x0000a677      0x819 ..\obj\stm32f10x_flash.o
+ .debug_info    0x0000ae90      0x6ba ..\obj\adc.o
+ .debug_info    0x0000b54a      0x4a2 ..\obj\stm32f10x_dma.o
+ .debug_info    0x0000b9ec      0x546 ..\obj\misc.o
+ .debug_info    0x0000bf32      0x235 ..\obj\stm32f10x_wwdg.o
+ .debug_info    0x0000c167      0x971 ..\obj\stm32f10x_spi.o
+ .debug_info    0x0000cad8      0xb94 ..\obj\stm32f10x_i2c.o
+ .debug_info    0x0000d66c      0x879 ..\obj\stm32f10x_bkp.o
+ .debug_info    0x0000dee5      0x200 ..\obj\stm32f10x_iwdg.o
 
 .debug_abbrev   0x00000000     0x2cea
  .debug_abbrev  0x00000000      0x166 ..\obj\stm32f10x_rtc.o
@@ -1629,7 +1634,7 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_ranges  0x00001088       0x68 ..\obj\stm32f10x_bkp.o
  .debug_ranges  0x000010f0       0x38 ..\obj\stm32f10x_iwdg.o
 
-.debug_line     0x00000000     0x6b94
+.debug_line     0x00000000     0x6b9b
  .debug_line    0x00000000      0x2c7 ..\obj\stm32f10x_rtc.o
  .debug_line    0x000002c7       0xbf ..\obj\semihosting.o
  .debug_line    0x00000386       0xb8 ..\obj\startup_stm32f10x_ld.o
@@ -1649,23 +1654,23 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_line    0x00002e42      0x3ed ..\obj\printf.o
  .debug_line    0x0000322f      0x4c6 ..\obj\stm32f10x_rcc.o
  .debug_line    0x000036f5      0x27b ..\obj\gpio.o
- .debug_line    0x00003970      0x1b5 ..\obj\motor.o
- .debug_line    0x00003b25      0x2ad ..\obj\stm32f10x_exti.o
- .debug_line    0x00003dd2      0x52c ..\obj\stm32f10x_adc.o
- .debug_line    0x000042fe      0x207 ..\obj\osc.o
- .debug_line    0x00004505      0x2c8 ..\obj\motorBldc.o
- .debug_line    0x000047cd      0x4a4 ..\obj\stm32f10x_usart.o
- .debug_line    0x00004c71       0x92 ..\obj\sh_cmd.o
- .debug_line    0x00004d03      0x1a8 ..\obj\syscalls.o
- .debug_line    0x00004eab      0x4e2 ..\obj\stm32f10x_flash.o
- .debug_line    0x0000538d      0x2e8 ..\obj\adc.o
- .debug_line    0x00005675      0x30c ..\obj\stm32f10x_dma.o
- .debug_line    0x00005981      0x24d ..\obj\misc.o
- .debug_line    0x00005bce      0x231 ..\obj\stm32f10x_wwdg.o
- .debug_line    0x00005dff      0x42b ..\obj\stm32f10x_spi.o
- .debug_line    0x0000622a      0x4e0 ..\obj\stm32f10x_i2c.o
- .debug_line    0x0000670a      0x280 ..\obj\stm32f10x_bkp.o
- .debug_line    0x0000698a      0x20a ..\obj\stm32f10x_iwdg.o
+ .debug_line    0x00003970      0x1b8 ..\obj\motor.o
+ .debug_line    0x00003b28      0x2ad ..\obj\stm32f10x_exti.o
+ .debug_line    0x00003dd5      0x52c ..\obj\stm32f10x_adc.o
+ .debug_line    0x00004301      0x207 ..\obj\osc.o
+ .debug_line    0x00004508      0x2cc ..\obj\motorBldc.o
+ .debug_line    0x000047d4      0x4a4 ..\obj\stm32f10x_usart.o
+ .debug_line    0x00004c78       0x92 ..\obj\sh_cmd.o
+ .debug_line    0x00004d0a      0x1a8 ..\obj\syscalls.o
+ .debug_line    0x00004eb2      0x4e2 ..\obj\stm32f10x_flash.o
+ .debug_line    0x00005394      0x2e8 ..\obj\adc.o
+ .debug_line    0x0000567c      0x30c ..\obj\stm32f10x_dma.o
+ .debug_line    0x00005988      0x24d ..\obj\misc.o
+ .debug_line    0x00005bd5      0x231 ..\obj\stm32f10x_wwdg.o
+ .debug_line    0x00005e06      0x42b ..\obj\stm32f10x_spi.o
+ .debug_line    0x00006231      0x4e0 ..\obj\stm32f10x_i2c.o
+ .debug_line    0x00006711      0x280 ..\obj\stm32f10x_bkp.o
+ .debug_line    0x00006991      0x20a ..\obj\stm32f10x_iwdg.o
 
 .debug_str      0x00000000     0x5761
  .debug_str     0x00000000      0x2fa ..\obj\stm32f10x_rtc.o
@@ -1715,7 +1720,7 @@ OUTPUT(lowVoltageDrive.elf elf32-littlearm)
  .debug_str     0x000038d7       0xab ..\obj\osc.o
                                 0x1d9 (size before relaxing)
  .debug_str     0x00003982      0x2b9 ..\obj\motorBldc.o
-                                0x440 (size before relaxing)
+                                0x478 (size before relaxing)
  .debug_str     0x00003c3b      0x43e ..\obj\stm32f10x_usart.o
                                 0x640 (size before relaxing)
  .debug_str     0x00004079      0x15d ..\obj\syscalls.o

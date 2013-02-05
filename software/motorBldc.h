@@ -15,7 +15,7 @@
 
 
 #define BLDC_DEFAULT_PWM_FREQ		16000
-#define BLDC_MIN_DUTY_CYCLE			10000
+#define BLDC_MIN_DUTY_CYCLE			5000
 
 // Use these to keep track of the
 //	current state of the motor

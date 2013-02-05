@@ -19,7 +19,7 @@
 typedef struct
 {
 	volatile uint8_t state;
-	volatile uint8_t sector;
+	volatile int8_t sector;
 	volatile uint16_t dutyCycle;
 	volatile uint32_t startTimeAbs;
 	volatile uint32_t startCommutationTimeAbs;
@@ -125,7 +125,7 @@ BLDC_initPositionSensors(void)
 
 	/* If the hall sensor values is valid, then
 	 * hall sensors are utilized for sensors */
-	if((hallValue == 0) || (hallValue == 7))
+	if((hallValue != 0) && (hallValue != 7))
 	{
 		BLDC_motor.sensor = BLDC_HALL;
 
@@ -162,6 +162,9 @@ BLDC_startMotor(void)
 		BLDC_motor.state = BLDC_STARTING;
 
 		BLDC_motor.startTimeAbs = MSTMR_getMilliSeconds();
+
+		BLDC_motor.dutyCycle = BLDC_MIN_DUTY_CYCLE;
+		BLDC_motor.direction = BLDC_command.direction;
 
 		BLDC_determineSector();
 		BLDC_commutate();
@@ -301,10 +304,21 @@ void
 BLDC_commutate(void)
 {
 	// Move to the next step in the 6-step scheme
-	if(++BLDC_motor.sector > 5)
+	if(BLDC_motor.direction == BLDC_POS)
 	{
-		BLDC_motor.sector = 0;
+		if(++BLDC_motor.sector > 5)
+		{
+			BLDC_motor.sector = 0;
+		}
 	}
+	else
+	{
+		if(--BLDC_motor.sector < 0)
+		{
+			BLDC_motor.sector = 5;
+		}
+	}
+
 
 	// Use lookup tables to determine which phase should be high,
 	//	low, and dormant based on the current sector (as defined by
@@ -321,21 +335,17 @@ BLDC_commutate(void)
 	const uint8_t loPhaseTable[] = {MPWM_PH_B, MPWM_PH_C, MPWM_PH_C, MPWM_PH_A, MPWM_PH_A, MPWM_PH_B};
 	const uint8_t dormantPhaseTable[] = {MPWM_PH_C, MPWM_PH_B, MPWM_PH_A, MPWM_PH_C, MPWM_PH_B, MPWM_PH_A};
 
-	// The dormant phase is dormant in either direction
-	MPWM_setPhaseDutyCycle(dormantPhaseTable[BLDC_motor.sector], MPWM_DORMANT, BLDC_motor.dutyCycle);
+	// Calculate the high side and low side duty cycles
+	uint16_t halfDutyCycle = (BLDC_motor.dutyCycle >> 1);
+	uint16_t highSideDutyCycle = 32767 + halfDutyCycle;
+	uint16_t lowSideDutyCycle = 32767 - halfDutyCycle;
 
-	// Load each phase with the appropriate duty cycle based on the sector and direction of the motor
-	if(BLDC_motor.direction)
-	{
-		MPWM_setPhaseDutyCycle(hiPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, BLDC_motor.dutyCycle);
-		MPWM_setPhaseDutyCycle(loPhaseTable[BLDC_motor.sector], MPWM_LO_STATE, BLDC_motor.dutyCycle);
-	}
-	else
-	{
-		// Reverse the direction of current flow when the motor should be rotating in the other direction
-		MPWM_setPhaseDutyCycle(hiPhaseTable[BLDC_motor.sector], MPWM_LO_STATE, BLDC_motor.dutyCycle);
-		MPWM_setPhaseDutyCycle(loPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, BLDC_motor.dutyCycle);
-	} // END if
+	// Load each phase with the appropriate duty cycle
+	MPWM_setPhaseDutyCycle(dormantPhaseTable[BLDC_motor.sector], MPWM_DORMANT, BLDC_motor.dutyCycle);
+	MPWM_setPhaseDutyCycle(hiPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, highSideDutyCycle);
+	MPWM_setPhaseDutyCycle(loPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, lowSideDutyCycle);
+	//MPWM_setAdcSamplingTime(highSideDutyCycle);
+
 
 	// Indicate which phase is dormant for later use by the ADC module
 	switch(dormantPhaseTable[BLDC_motor.sector])
@@ -361,6 +371,7 @@ BLDC_commutate(void)
 		default:
 		{
 			BLDC_motor.dormantPhasePtr = NULL;
+			break;
 		}
 	}
 
@@ -439,14 +450,14 @@ BLDC_adcInterrupt(void)
 			//	TODO: make a case for the reverse direction
 			if((BLDC_motor.sector & 0b1) == 1)
 			{
-				if(*BLDC_motor.dormantPhasePtr > neutralVoltage)
+				if(*BLDC_motor.dormantPhasePtr < neutralVoltage)
 				{
 					BLDC_commutate();
 				}
 			}
 			else
 			{
-				if(*BLDC_motor.dormantPhasePtr < neutralVoltage)
+				if(*BLDC_motor.dormantPhasePtr > neutralVoltage)
 				{
 					BLDC_commutate();
 				}
@@ -455,7 +466,7 @@ BLDC_adcInterrupt(void)
 			// If a few milliseconds have passed without a commutation,
 			//	then apply a commutation so that the motor isn't stuck
 			//	in one position
-			if((BLDC_motor.startCommutationTimeAbs + 50) < MSTMR_getMilliSeconds())
+			if((BLDC_motor.startCommutationTimeAbs + 25) < MSTMR_getMilliSeconds())
 			{
 				BLDC_commutate();
 			}

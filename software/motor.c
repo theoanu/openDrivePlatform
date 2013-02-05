@@ -11,6 +11,8 @@
 #include "motorBldc.h"
 #include "motorDc.h"
 
+#define MOT_MIN_DUTY_CYCLE	BLDC_MIN_DUTY_CYCLE
+
 /* Global variables */
 typedef struct
 {
@@ -165,6 +167,11 @@ MOT_commandDutyCycle(uint16_t dutyCycle)
 	if(dutyCycle < MOT_MIN_DUTY_CYCLE)
 	{
 		dutyCycle = 0;
+		MOT_stopMotor();
+	}
+	else
+	{
+		MOT_startMotor();
 	}
 
 	switch(motor.type)
