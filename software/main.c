@@ -6,12 +6,20 @@
  *	even the implied warranty of MERCHANTABILITY
  *	or FITNESS FOR A PARTICULAR PURPOSE.
 *************************************************/
+#include "hw_config.h"
+#include "usb_lib.h"
+#include "usb_desc.h"
+#include "usb_pwr.h"
+
 #include "gpio.h"
 #include "osc.h"
 #include "milliSecTimer.h"
 #include "motor.h"
 #include "rcPwm.h"
 #include "adc.h"
+
+#include "stdio.h"
+double f;
 
 void initDio(void);
 
@@ -40,6 +48,11 @@ main(void)
 
 	// Initialize motor
 	MOT_defineMotorType(MOT_DC);
+
+	// init USB
+	Set_USBClock();
+	USB_Interrupts_Config();
+	USB_Init();
 
 	// Initialize UART/CLI
 

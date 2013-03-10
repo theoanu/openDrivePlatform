@@ -82,7 +82,7 @@ OSC_initHseClock(void)
 	while(clock != 0b10){
 		clock = (uint32_t)((RCC->CFGR >> 2) & 0x00000003);
 	}
-
+	// PLL = HSE (8MHz) x 9 = 72MHz
 	// APB1 = 36MHz, APB2 = 72MHz
 	RCC->CFGR |= (uint32_t)(0b100 << 8);
 
@@ -97,7 +97,8 @@ OSC_initHseClock(void)
 					+ (1 << 3)					// IO port B
 					+ (1 << 2));				// IO port A
 
-	RCC->APB1ENR |= (uint32_t)((1 << 17)		// USART2
+	RCC->APB1ENR |= (uint32_t)((1 << 23) 		// USB
+					+ (1 << 17)					// USART2
 					+ (1 << 1));				// TIM3
 
 	oscillator.clockFreq = 72000000;

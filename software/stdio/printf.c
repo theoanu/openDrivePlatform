@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+int _write(int file, char *ptr, int len);
 
 /**
  * @brief  Transmit a char, if you want to use printf(), 
@@ -20,7 +21,8 @@ void PrintChar(char c)
 	/* Send a char like: 
 	   while(Transfer not completed);
 	   Transmit a char;
-	*/	
+	*/
+	_write(0, &c, 1);
 }
 
 /** Maximum string size allowed (in bytes). */
@@ -78,7 +80,7 @@ signed int PutUnsignedInt(
     char *pStr,
     char fill,
     signed int width,
-    unsigned int value)
+    unsigned long int value)
 {
     signed int num = 0;
 
@@ -124,10 +126,10 @@ signed int PutSignedInt(
     char *pStr,
     char fill,
     signed int width,
-    signed int value)
+    signed long int value)
 {
     signed int num = 0;
-    unsigned int absolute;
+    unsigned long int absolute;
 
     /* Compute absolute value */
     if (value < 0) {
@@ -186,6 +188,20 @@ signed int PutSignedInt(
     return num;
 }
 
+signed int PutFloat(char *pStr, char fill, signed int width, double value)
+{
+	long int p = value;
+	int num = PutSignedInt(pStr, fill, width, p);
+    pStr += num;
+	long int m = (value - p) * 1000000000;
+	if(m > 0)
+	{
+		num += PutChar(pStr, '.');
+		pStr++;
+		num += PutSignedInt(pStr, '0', 9, m);
+	}
+	return num;
+}
 
 /**
  * @brief  Writes an hexadecimal value into a string, using the given fill, width &
@@ -251,6 +267,9 @@ signed int PutHexa(
 
 /* Global Functions ----------------------------------------------------------- */
 
+//#define va_argt(ap, type) ({ *((type*)ap.__ap)++; })
+#define _INTSIZEOF(t) (((sizeof(t)+3) >> 2) << 2)
+#define va_arg_new(ap,t)(*(t*)((ap.__ap +=_INTSIZEOF(t))-_INTSIZEOF(t)))
 
 /**
  * @brief  Stores the result of a formatted string into another string. Format
@@ -318,8 +337,10 @@ signed int vsnprintf(char *pStr, size_t length, const char *pFormat, va_list ap)
 
                 width = length - size;
             }
-        
-            /* Parse type */
+
+            double d;
+
+        	/* Parse type */
             switch (*pFormat) {
             case 'd': 
             case 'i': num = PutSignedInt(pStr, fill, width, va_arg(ap, signed int)); break;
@@ -328,6 +349,26 @@ signed int vsnprintf(char *pStr, size_t length, const char *pFormat, va_list ap)
             case 'X': num = PutHexa(pStr, fill, width, 1, va_arg(ap, unsigned int)); break;
             case 's': num = PutString(pStr, va_arg(ap, char *)); break;
             case 'c': num = PutChar(pStr, va_arg(ap, unsigned int)); break;
+            case 'f':
+            		d = va_arg_new(ap, double);
+            		num = PutFloat(pStr, fill, width, d);
+            		break;
+            case 'l':
+            	pFormat++;
+            	switch(*pFormat)
+            	{
+            	case 'u':
+            		num = PutUnsignedInt(pStr, fill, width, va_arg(ap, unsigned long int));
+            		break;
+            	case 'd':
+            		num = PutSignedInt(pStr, fill, width, va_arg(ap, signed long int));
+            		break;
+            	case 'f':
+            		d = va_arg_new(ap, double);
+            		num = PutFloat(pStr, fill, width, d);
+            		break;
+            	}
+            	break;
             default:
                 return EOF;
             }
