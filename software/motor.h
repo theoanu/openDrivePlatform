@@ -11,8 +11,6 @@
 #ifndef MOTOR_H
 #define MOTOR_H
 
-#define MOT_MIN_DUTY_CYCLE	5000
-
 typedef enum
 {
 	MOT_DC,

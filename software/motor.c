@@ -11,8 +11,11 @@
 #include "motorBldc.h"
 #include "motorDc.h"
 
+#define MOT_MIN_DUTY_CYCLE	BLDC_MIN_DUTY_CYCLE
+
 /* Global variables */
-typedef struct{
+typedef struct
+{
 	_MOT_motorType type;
 } _motor;
 
@@ -34,7 +37,7 @@ void
 MOT_defineMotorType(_MOT_motorType motorType)
 {
 	// Stop all motor activity
-	//BLDC_stopMotor();
+	BLDC_stopMotor();
 	MDC_stopMotor();
 
 	// Change the motor type
@@ -43,7 +46,7 @@ MOT_defineMotorType(_MOT_motorType motorType)
 	MOT_initMotor();
 
 	return;
-}
+} // END MOT_defineMotorType()
 
 /***************************************************************
  * Function:	void MOT_initMotor(void)
@@ -67,16 +70,16 @@ MOT_initMotor(void)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_initMotor();
+			BLDC_initMotor();
 			break;
 
 		default:
-			//BLDC_initMotor();
+			BLDC_initMotor();
 			break;
 	}
 
 	return;
-}
+} // END MOT_initMotor()
 
 /***************************************************************
  * Function:	void MOT_startMotor(void)
@@ -100,16 +103,16 @@ MOT_startMotor(void)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_startMotor();
+			BLDC_startMotor();
 			break;
 
 		default:
-			//BLDC_startMotor();
+			BLDC_startMotor();
 			break;
 	}
 
 	return;
-}
+} // END MOT_startMotor()
 
 /***************************************************************
  * Function:	void MOT_stopMotor(void)
@@ -133,16 +136,16 @@ MOT_stopMotor(void)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_stopMotor();
+			BLDC_stopMotor();
 			break;
 
 		default:
-			//BLDC_stopMotor();
+			BLDC_stopMotor();
 			break;
 	}
 
 	return;
-}
+} // END MOT_stopMotor()
 
 /***************************************************************
  * Function:	void MOT_commandDutyCycle(uint16_t dutyCycle)
@@ -164,6 +167,11 @@ MOT_commandDutyCycle(uint16_t dutyCycle)
 	if(dutyCycle < MOT_MIN_DUTY_CYCLE)
 	{
 		dutyCycle = 0;
+		MOT_stopMotor();
+	}
+	else
+	{
+		MOT_startMotor();
 	}
 
 	switch(motor.type)
@@ -173,16 +181,16 @@ MOT_commandDutyCycle(uint16_t dutyCycle)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_commandDutyCycle(dutyCycle);
+			BLDC_commandDutyCycle(dutyCycle);
 			break;
 
 		default:
-			//BLDC_stopMotor();
+			BLDC_stopMotor();
 			break;
 	}
 
 	return;
-}
+} // END MOT_commandDutyCycle
 
 /***************************************************************
  * Function:	void MOT_commandDirection(_MOT_motorDirection direction)
@@ -207,14 +215,14 @@ MOT_commandDirection(_MOT_motorDirection direction)
 			break;
 
 		case MOT_BLDC:
-			//BLDC_commandDirection(direction);
+			BLDC_commandDirection(direction);
 			break;
 
 		default:
-			//BLDC_commandDirection(direction);
+			BLDC_commandDirection(direction);
 			break;
 	}
 
 	return;
-}
+} // END MOT_commandDirection()
 

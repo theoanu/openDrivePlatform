@@ -187,6 +187,20 @@ ADC_getVoltage(_adcSample voltageSource)
 	return voltage;
 }
 
+/***************************************************************************
+ * Function:	void ADC_initAdc1Interrupt(void (*addressPtr)(void))
+ *
+ * Purpose:		This function is called in order to enable interrupts on ADC1
+ * 					and also to pass the address of higher-level code in order
+ * 					to assign the interrupt to higher-level code.
+ *
+ * Parameters:	void (*addressPtr)(void) - the address of code to be executed
+ * 											when an ADC1 interrupt occurs
+ *
+ * Returns:		none
+ *
+ * Globals affected:	*adc1InterruptPtr
+ ***************************************************************************/
 void
 ADC_initAdc1Interrupt(void (*addressPtr)(void))
 {
@@ -196,6 +210,20 @@ ADC_initAdc1Interrupt(void (*addressPtr)(void))
 	return;
 }
 
+/***************************************************************************
+ * Function:	void ADC_initAdc2Interrupt(void (*addressPtr)(void))
+ *
+ * Purpose:		This function is called in order to enable interrupts on ADC2
+ * 					and also to pass the address of higher-level code in order
+ * 					to assign the interrupt to higher-level code.
+ *
+ * Parameters:	void (*addressPtr)(void) - the address of code to be executed
+ * 											when an ADC2 interrupt occurs
+ *
+ * Returns:		none
+ *
+ * Globals affected:	*adc2InterruptPtr
+ ***************************************************************************/
 void
 ADC_initAdc2Interrupt(void (*addressPtr)(void))
 {
@@ -205,6 +233,18 @@ ADC_initAdc2Interrupt(void (*addressPtr)(void))
 	return;
 }
 
+/***************************************************************************
+ * Function:	void ADC_deinitAdc1Interrupt(void)
+ *
+ * Purpose:		This function is called in order to disable interrupts on ADC1
+ * 					and to reset the pointer to NULL.
+ *
+ * Parameters:	none
+ *
+ * Returns:		none
+ *
+ * Globals affected:	*adc1InterruptPtr
+ ***************************************************************************/
 void
 ADC_deinitAdc1Interrupt(void)
 {
@@ -214,6 +254,18 @@ ADC_deinitAdc1Interrupt(void)
 	return;
 }
 
+/***************************************************************************
+ * Function:	void ADC_deinitAdc2Interrupt(void)
+ *
+ * Purpose:		This function is called in order to disable interrupts on ADC2
+ * 					and to reset the pointer to NULL.
+ *
+ * Parameters:	none
+ *
+ * Returns:		none
+ *
+ * Globals affected:	*adc2InterruptPtr
+ ***************************************************************************/
 void
 ADC_deinitAdc2Interrupt(void)
 {
@@ -222,6 +274,21 @@ ADC_deinitAdc2Interrupt(void)
 
 	return;
 }
+
+/***************************************************************************
+ * Function:	void ADC1_2_IRQHandler(void)
+ *
+ * Purpose:		ADC interrupt that occurs when either ADC1 or ADC2 are executed.
+ * 					This function is currently configured to distinguish between
+ * 					ADC1 and ADC2 interrupts and to call higher-level code that
+ * 					was previously assigned when the interrupt was enabled.
+ *
+ * Parameters:	none
+ *
+ * Returns:		none
+ *
+ * Globals affected:	none
+ ***************************************************************************/
 
 void
 ADC1_2_IRQHandler(void)

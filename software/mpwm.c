@@ -77,7 +77,7 @@ MPWM_initMotorPwm(void)
 	MPWM_setDeadTime(1.0);
 
 	// Set ADC sampling time
-	MPWM_setAdcSamplingTime(64000);
+	MPWM_setAdcSamplingTime(35000);
 
 	// Master Output Enable on
 	TIM1->BDTR |= (uint16_t)(1 << 15);
@@ -371,7 +371,6 @@ MPWM_setPhaseDutyCycle(uint8_t phase, uint8_t state, uint16_t dutyCycle)
 void
 TIM1_CC_IRQHandler(void)
 {
-	GPIO_setOutputPin(GPIO_PORT_A, 5);
 	ADC_startAdcConversion();
 
 	TIM1->SR = 0;

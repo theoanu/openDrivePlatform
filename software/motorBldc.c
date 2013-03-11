@@ -6,17 +6,26 @@
  *	even the implied warranty of MERCHANTABILITY
  *	or FITNESS FOR A PARTICULAR PURPOSE.
 *************************************************/
-#include "stm32f10x_adc.h"
 #include "misc.h"
 #include "motorBldc.h"
 #include "mpwm.h"
 #include "gpio.h"
+#include "adc.h"
+#include "milliSecTimer.h"
+
+#define NULL	0
 
 /* Global variables */
-typedef struct{
-	uint8_t state;
-	uint8_t sector;
-	uint16_t dutyCycle;
+typedef struct
+{
+	volatile uint8_t state;
+	volatile int8_t sector;
+	volatile uint16_t dutyCycle;
+	volatile uint32_t startTimeAbs;
+	volatile uint32_t startCommutationTimeAbs;
+	volatile uint32_t lockUntilTimeAbs;
+	volatile uint16_t phaseA, phaseB, phaseC;
+	volatile uint16_t *dormantPhasePtr;
 	_BLDC_motorDirection direction;
 
 	_BLDC_sensor sensor;
@@ -29,13 +38,14 @@ typedef struct{
 	uint16_t dutyCycle;
 }_bldc_motor_command;
 
-_bldc_motor BLDC_motor;
+volatile _bldc_motor BLDC_motor;
 _bldc_motor_command BLDC_command;
 
 // Used internally to motor.c, "private"
 void BLDC_commutate(void);
 void BLDC_initPositionSensors(void);
 void BLDC_determineSector(void);
+void BLDC_adcInterrupt(void);
 
 /* This is a complete table that lists all of the possible translations
  * from hall sensor inputs to sectors. */
@@ -78,6 +88,11 @@ BLDC_initMotor(void)
 
 	BLDC_initPositionSensors();
 
+	// Assign the ADC1 Interrupt to the BLDC_adcInterrupt() function
+	//	and enable the interrupt.  Whenever an ADC1 interrupt occurs,
+	//	it will execute the BLDC_adcInterrupt() code from this file.
+	ADC_initAdc1Interrupt(&BLDC_adcInterrupt);
+
 	return;
 } // END BLDC_initMotor()
 
@@ -110,11 +125,13 @@ BLDC_initPositionSensors(void)
 
 	/* If the hall sensor values is valid, then
 	 * hall sensors are utilized for sensors */
-	if((hallValue == 0) || (hallValue == 7)){
+	if((hallValue != 0) && (hallValue != 7))
+	{
 		BLDC_motor.sensor = BLDC_HALL;
 
 		// Load the table to be used from program memory
-		for(uint8_t i = 0; i < 8; i++){
+		for(uint8_t i = 0; i < 8; i++)
+		{
 			BLDC_motor.hallToSector[i] = hallToSector[hallTableUtilized][i];
 		}
 	}
@@ -139,11 +156,18 @@ BLDC_startMotor(void)
 {
 	// Only allow this routine to execute if
 	//	the motor is in the STOPPED state
-	if(BLDC_motor.state == BLDC_STOPPED){
+	if(BLDC_motor.state == BLDC_STOPPED)
+	{
 		BLDC_motor.sector = 0;
 		BLDC_motor.state = BLDC_STARTING;
 
+		BLDC_motor.startTimeAbs = MSTMR_getMilliSeconds();
+
+		BLDC_motor.dutyCycle = BLDC_MIN_DUTY_CYCLE;
+		BLDC_motor.direction = BLDC_command.direction;
+
 		BLDC_determineSector();
+		BLDC_commutate();
 	}
 
 	return;
@@ -234,7 +258,7 @@ BLDC_determineSector(void)
  *
  * Returns:		none
  *
- * Globals affected:	BLDC_motor.dutyCycle
+ * Globals affected:	BLDC_command.dutyCycle
  **************************************************************/
 void
 BLDC_commandDutyCycle(uint16_t dutyCycle)
@@ -280,10 +304,21 @@ void
 BLDC_commutate(void)
 {
 	// Move to the next step in the 6-step scheme
-	if(++BLDC_motor.sector > 5)
+	if(BLDC_motor.direction == BLDC_POS)
 	{
-		BLDC_motor.sector = 0;
+		if(++BLDC_motor.sector > 5)
+		{
+			BLDC_motor.sector = 0;
+		}
 	}
+	else
+	{
+		if(--BLDC_motor.sector < 0)
+		{
+			BLDC_motor.sector = 5;
+		}
+	}
+
 
 	// Use lookup tables to determine which phase should be high,
 	//	low, and dormant based on the current sector (as defined by
@@ -300,17 +335,50 @@ BLDC_commutate(void)
 	const uint8_t loPhaseTable[] = {MPWM_PH_B, MPWM_PH_C, MPWM_PH_C, MPWM_PH_A, MPWM_PH_A, MPWM_PH_B};
 	const uint8_t dormantPhaseTable[] = {MPWM_PH_C, MPWM_PH_B, MPWM_PH_A, MPWM_PH_C, MPWM_PH_B, MPWM_PH_A};
 
-	// Load each phase with the appropriate duty cycle based on the sector and direction of the motor
-	if(BLDC_motor.direction){
-		MPWM_setPhaseDutyCycle(hiPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, BLDC_motor.dutyCycle);
-		MPWM_setPhaseDutyCycle(loPhaseTable[BLDC_motor.sector], MPWM_LO_STATE, BLDC_motor.dutyCycle);
-		MPWM_setPhaseDutyCycle(dormantPhaseTable[BLDC_motor.sector], MPWM_DORMANT, BLDC_motor.dutyCycle);
-	}else
+	// Calculate the high side and low side duty cycles
+	uint16_t halfDutyCycle = (BLDC_motor.dutyCycle >> 1);
+	uint16_t highSideDutyCycle = 32767 + halfDutyCycle;
+	uint16_t lowSideDutyCycle = 32767 - halfDutyCycle;
+
+	// Load each phase with the appropriate duty cycle
+	MPWM_setPhaseDutyCycle(dormantPhaseTable[BLDC_motor.sector], MPWM_DORMANT, BLDC_motor.dutyCycle);
+	MPWM_setPhaseDutyCycle(hiPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, highSideDutyCycle);
+	MPWM_setPhaseDutyCycle(loPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, lowSideDutyCycle);
+	//MPWM_setAdcSamplingTime(highSideDutyCycle);
+
+
+	// Indicate which phase is dormant for later use by the ADC module
+	switch(dormantPhaseTable[BLDC_motor.sector])
 	{
-		MPWM_setPhaseDutyCycle(hiPhaseTable[BLDC_motor.sector], MPWM_LO_STATE, BLDC_motor.dutyCycle);
-		MPWM_setPhaseDutyCycle(loPhaseTable[BLDC_motor.sector], MPWM_HI_STATE, BLDC_motor.dutyCycle);
-		MPWM_setPhaseDutyCycle(dormantPhaseTable[BLDC_motor.sector], MPWM_DORMANT, BLDC_motor.dutyCycle);
-	} // END if
+		case MPWM_PH_A:
+		{
+			BLDC_motor.dormantPhasePtr = &BLDC_motor.phaseA;
+			break;
+		}
+
+		case MPWM_PH_B:
+		{
+			BLDC_motor.dormantPhasePtr = &BLDC_motor.phaseB;
+			break;
+		}
+
+		case MPWM_PH_C:
+		{
+			BLDC_motor.dormantPhasePtr = &BLDC_motor.phaseC;
+			break;
+		}
+
+		default:
+		{
+			BLDC_motor.dormantPhasePtr = NULL;
+			break;
+		}
+	}
+
+	if(BLDC_motor.state == BLDC_STARTING)
+	{
+		BLDC_motor.startCommutationTimeAbs = MSTMR_getMilliSeconds();
+	}
 
 	return;
 } //END BLDC_commutate
@@ -328,8 +396,103 @@ BLDC_commutate(void)
  * Globals affected:	none
  **************************************************************/
 uint8_t
-BLDC_getMotorState(void){
+BLDC_getMotorState(void)
+{
 	return BLDC_motor.state;
 }
 
+/***************************************************************
+ * Function:	uint8_t BLDC_adcInterrupt(void)
+ *
+ * Purpose:		This function is executed when all of the phase
+ * 					ADC's have been sampled and converted.
+ *
+ * Parameters:	none
+ *
+ * Returns:		none
+ *
+ * Globals affected:	none
+ **************************************************************/
+void
+BLDC_adcInterrupt(void)
+{
+	// retrieve phase adc values
+	// TODO: Could probably do this using DMA more efficiently
+	BLDC_motor.phaseA = ADC_getVoltage(ADC_PH_A);
+	BLDC_motor.phaseB = ADC_getVoltage(ADC_PH_B);
+	BLDC_motor.phaseC = ADC_getVoltage(ADC_PH_C);
+
+	uint16_t neutralVoltage = ADC_getVoltage(ADC_V_BUS) >> 1;
+
+	switch(BLDC_motor.state)
+	{
+		case BLDC_LOCKED:
+		{
+			// When the locked timer expires, then shift
+			//	the motor into the "stopped" state
+			if(MSTMR_getMilliSeconds() > BLDC_motor.lockUntilTimeAbs)
+			{
+				BLDC_motor.state = BLDC_STOPPED;
+			}
+
+			break;
+		}
+
+		case BLDC_STOPPED:
+		{
+			break;
+		}
+
+		// TODO: verify everything in this case on the hardware
+		case BLDC_STARTING:
+		{
+			// Apply the starting signal to the phases
+			//	TODO: make a case for the reverse direction
+			if((BLDC_motor.sector & 0b1) == 1)
+			{
+				if(*BLDC_motor.dormantPhasePtr < neutralVoltage)
+				{
+					BLDC_commutate();
+				}
+			}
+			else
+			{
+				if(*BLDC_motor.dormantPhasePtr > neutralVoltage)
+				{
+					BLDC_commutate();
+				}
+			}
+
+			// If a few milliseconds have passed without a commutation,
+			//	then apply a commutation so that the motor isn't stuck
+			//	in one position
+			if((BLDC_motor.startCommutationTimeAbs + 25) < MSTMR_getMilliSeconds())
+			{
+				BLDC_commutate();
+			}
+
+			// When the motor has reached a sufficient speed,
+			//	then shift the motor into the "running" mode
+
+
+			break;
+		}
+
+		case BLDC_RUNNING:
+		{
+			// Apply the running signal to the phases
+
+			break;
+		}
+
+		default:
+		{
+			// Should never get here
+			break;
+		}
+
+	}
+
+	return;
+}
 
